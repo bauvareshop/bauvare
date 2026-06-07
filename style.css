@@ -5,156 +5,209 @@
 }
 
 body {
-  background-color: #1f1f1f;
-  color: white;
+  background-color: #202020;
+  color: #ffffff;
   font-family: Arial, sans-serif;
 }
 
-header {
+.header {
+  background: #151515;
   text-align: center;
-  padding: 40px 20px;
-  background-color: #181818;
+  padding: 45px 20px;
+  border-bottom: 1px solid #333;
 }
 
-header h1 {
-  font-size: 42px;
-  letter-spacing: 6px;
+.header h1 {
+  font-size: 48px;
+  letter-spacing: 9px;
+  font-weight: 700;
 }
 
-header p {
+.header p {
   margin-top: 10px;
-  color: #cfcfcf;
+  color: #c7c7c7;
+  letter-spacing: 2px;
+}
+
+.hero {
+  text-align: center;
+  padding: 45px 20px 25px;
+}
+
+.hero h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  color: #c9c9c9;
 }
 
 .catalogo {
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  padding: 30px;
+  gap: 18px;
+  padding: 25px;
 }
 
 .producto {
+  background: #2b2b2b;
   cursor: pointer;
-  background-color: #2b2b2b;
-  padding-bottom: 15px;
-  text-align: center;
+  overflow: hidden;
   transition: 0.3s;
 }
 
 .producto:hover {
-  transform: scale(1.03);
+  transform: translateY(-6px);
+  background: #333;
 }
 
 .producto img {
   width: 100%;
-  height: 420px;
+  height: 480px;
   object-fit: cover;
+  display: block;
 }
 
-.producto h3 {
-  margin-top: 12px;
-  font-size: 18px;
+.producto-info {
+  padding: 16px;
+  text-align: center;
 }
 
-.producto p {
-  margin-top: 5px;
-  color: #d6d6d6;
+.producto-info h3 {
+  font-size: 17px;
+  margin-bottom: 7px;
+}
+
+.producto-info p {
+  color: #dddddd;
 }
 
 .modal {
   display: none;
   position: fixed;
-  z-index: 1000;
   inset: 0;
-  background-color: rgba(0,0,0,0.85);
+  background: rgba(0,0,0,0.88);
+  z-index: 1000;
   justify-content: center;
   align-items: center;
+  padding: 20px;
 }
 
-.modal-contenido {
-  background-color: #252525;
-  width: 90%;
-  max-width: 1100px;
-  max-height: 90vh;
+.modal-content {
+  position: relative;
+  background: #242424;
+  width: 95%;
+  max-width: 1150px;
+  max-height: 92vh;
   overflow-y: auto;
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 25px;
   padding: 25px;
-  position: relative;
 }
 
 .cerrar {
   position: absolute;
-  right: 20px;
-  top: 10px;
+  top: 12px;
+  right: 18px;
+  background: none;
+  border: none;
+  color: white;
   font-size: 35px;
   cursor: pointer;
+  z-index: 2;
 }
 
-.modal-galeria {
+.galeria {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 12px;
 }
 
-.modal-galeria img {
+.galeria img {
   width: 100%;
-  height: 350px;
+  height: 430px;
   object-fit: cover;
 }
 
-.modal-info h2 {
-  font-size: 28px;
-  margin-bottom: 10px;
+.detalle {
+  padding: 25px 10px;
 }
 
-.modal-info p {
-  font-size: 22px;
-  margin-bottom: 25px;
+.detalle h2 {
+  font-size: 30px;
+  margin-bottom: 12px;
 }
 
-.modal-info label {
+.precio {
+  font-size: 24px;
+  margin-bottom: 30px;
+  color: #e2e2e2;
+}
+
+.detalle label {
   display: block;
-  margin-top: 15px;
-  margin-bottom: 6px;
+  margin-top: 18px;
+  margin-bottom: 8px;
+  color: #cccccc;
 }
 
-.modal-info select {
+.detalle select {
   width: 100%;
-  padding: 12px;
-  background-color: #111;
+  padding: 14px;
+  background: #111;
   color: white;
-  border: 1px solid #777;
+  border: 1px solid #555;
+  font-size: 15px;
 }
 
-.modal-info button {
-  margin-top: 25px;
+.btn-wsp {
+  margin-top: 28px;
   width: 100%;
-  padding: 15px;
-  background-color: #25D366;
-  color: white;
+  padding: 16px;
   border: none;
+  background: #25D366;
+  color: white;
   font-size: 16px;
   cursor: pointer;
+  font-weight: bold;
 }
 
-@media (max-width: 900px) {
+footer {
+  text-align: center;
+  color: #999;
+  padding: 35px 20px;
+  font-size: 14px;
+}
+
+@media (max-width: 1000px) {
   .catalogo {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .modal-contenido {
+  .modal-content {
     grid-template-columns: 1fr;
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 560px) {
+  .header h1 {
+    font-size: 34px;
+    letter-spacing: 5px;
+  }
+
   .catalogo {
     grid-template-columns: 1fr;
+    padding: 15px;
   }
 
   .producto img {
-    height: 380px;
+    height: 430px;
+  }
+
+  .galeria {
+    grid-template-columns: 1fr;
   }
 }
