@@ -1,42 +1,51 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BAUVARE</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BAUVARE | Catálogo</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <header>
+  <header class="header">
     <h1>BAUVARE</h1>
-    <p>Urban formal wear</p>
+    <p>Urban Formal Wear</p>
   </header>
 
-  <main>
-    <section class="catalogo" id="catalogo"></section>
-  </main>
+  <section class="hero">
+    <h2>Catálogo exclusivo</h2>
+    <p>Prendas urbanas con estilo formal para vestir diferente.</p>
+  </section>
+
+  <main class="catalogo" id="catalogo"></main>
 
   <div class="modal" id="modal">
-    <div class="modal-contenido">
-      <span class="cerrar" onclick="cerrarModal()">×</span>
+    <div class="modal-content">
+      <button class="cerrar" onclick="cerrarModal()">×</button>
 
-      <div class="modal-galeria" id="modalGaleria"></div>
+      <div class="galeria" id="galeria"></div>
 
-      <div class="modal-info">
-        <h2 id="modalNombre"></h2>
-        <p id="modalPrecio"></p>
+      <div class="detalle">
+        <h2 id="productoNombre"></h2>
+        <p class="precio" id="productoPrecio"></p>
 
-        <label>Color:</label>
+        <label>Color disponible</label>
         <select id="colorSeleccionado"></select>
 
-        <label>Talla:</label>
+        <label>Talla disponible</label>
         <select id="tallaSeleccionada"></select>
 
-        <button onclick="pedirWhatsApp()">Pedir por WhatsApp</button>
+        <button class="btn-wsp" onclick="pedirWhatsApp()">
+          Pedir por WhatsApp
+        </button>
       </div>
     </div>
   </div>
+
+  <footer>
+    <p>© 2026 BAUVARE. Todos los derechos reservados.</p>
+  </footer>
 
   <script src="productos.js"></script>
   <script>
@@ -45,31 +54,33 @@
 
     productos.forEach((producto, index) => {
       catalogo.innerHTML += `
-        <div class="producto" onclick="abrirModal(${index})">
+        <article class="producto" onclick="abrirModal(${index})">
           <img src="${producto.imagenes[0]}" alt="${producto.nombre}">
-          <h3>${producto.nombre}</h3>
-          <p>${producto.precio}</p>
-        </div>
+          <div class="producto-info">
+            <h3>${producto.nombre}</h3>
+            <p>${producto.precio}</p>
+          </div>
+        </article>
       `;
     });
 
     function abrirModal(index) {
       productoActual = productos[index];
 
-      document.getElementById("modalNombre").textContent = productoActual.nombre;
-      document.getElementById("modalPrecio").textContent = productoActual.precio;
+      document.getElementById("productoNombre").textContent = productoActual.nombre;
+      document.getElementById("productoPrecio").textContent = productoActual.precio;
 
-      document.getElementById("modalGaleria").innerHTML = productoActual.imagenes.map(img =>
-        `<img src="${img}" alt="${productoActual.nombre}">`
-      ).join("");
+      document.getElementById("galeria").innerHTML = productoActual.imagenes.map(img => `
+        <img src="${img}" alt="${productoActual.nombre}">
+      `).join("");
 
-      document.getElementById("colorSeleccionado").innerHTML = productoActual.colores.map(color =>
-        `<option value="${color}">${color}</option>`
-      ).join("");
+      document.getElementById("colorSeleccionado").innerHTML = productoActual.colores.map(color => `
+        <option value="${color}">${color}</option>
+      `).join("");
 
-      document.getElementById("tallaSeleccionada").innerHTML = productoActual.tallas.map(talla =>
-        `<option value="${talla}">${talla}</option>`
-      ).join("");
+      document.getElementById("tallaSeleccionada").innerHTML = productoActual.tallas.map(talla => `
+        <option value="${talla}">${talla}</option>
+      `).join("");
 
       document.getElementById("modal").style.display = "flex";
     }
@@ -81,10 +92,9 @@
     function pedirWhatsApp() {
       const color = document.getElementById("colorSeleccionado").value;
       const talla = document.getElementById("tallaSeleccionada").value;
+      const mensaje = `Hola BAUVARE, quiero pedir: ${productoActual.nombre}, color ${color}, talla ${talla}, precio ${productoActual.precio}.`;
 
-      const mensaje = `Hola, quiero pedir: ${productoActual.nombre}, color ${color}, talla ${talla}, precio ${productoActual.precio}`;
       const numero = "51999999999";
-
       window.open(`https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`, "_blank");
     }
   </script>
