@@ -11,7 +11,7 @@
 body{
   font-family:Arial,sans-serif;
   background:#1f1f1f;
-  color:#fff;
+  color:white;
 }
 
 .header{
@@ -34,15 +34,12 @@ body{
 }
 
 .nav a{
-  color:#fff;
+  color:white;
   text-decoration:none;
   margin:0 18px;
-  font-size:15px;
 }
 
-.carrito{
-  font-size:22px;
-}
+.carrito{font-size:22px}
 
 .banner{
   width:92%;
@@ -70,9 +67,7 @@ body{
   transition:.3s;
 }
 
-.producto:hover{
-  transform:translateY(-6px);
-}
+.producto:hover{transform:translateY(-6px)}
 
 .producto img{
   width:100%;
@@ -102,6 +97,7 @@ body{
   font-size:14px;
 }
 
+/* MODAL */
 .modal{
   display:none;
   position:fixed;
@@ -114,14 +110,14 @@ body{
 }
 
 .modal-content{
-  background:#f7f7f7;
-  color:#111;
+  background:#2b2b2b;
+  color:white;
   width:95%;
   max-width:1200px;
   max-height:92vh;
   overflow-y:auto;
   display:grid;
-  grid-template-columns:1.5fr 1fr;
+  grid-template-columns:1.3fr 1fr;
   gap:35px;
   padding:30px;
   border-radius:18px;
@@ -134,22 +130,39 @@ body{
   right:18px;
   font-size:34px;
   background:none;
+  color:white;
   border:none;
   cursor:pointer;
 }
 
-.galeria{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:12px;
+.foto-modal{
+  position:relative;
 }
 
-.galeria img{
+.foto-modal img{
   width:100%;
-  height:520px;
+  height:620px;
   object-fit:cover;
-  border-radius:12px;
+  border-radius:14px;
+  background:#333;
 }
+
+.flecha{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:42px;
+  height:42px;
+  border:none;
+  border-radius:50%;
+  background:rgba(0,0,0,.55);
+  color:white;
+  font-size:26px;
+  cursor:pointer;
+}
+
+.flecha.izq{left:12px}
+.flecha.der{right:12px}
 
 .info h2{
   font-size:32px;
@@ -162,19 +175,75 @@ body{
   margin-bottom:22px;
 }
 
-.info label{
-  display:block;
-  margin-top:16px;
-  margin-bottom:7px;
-  font-weight:bold;
+.bloque{
+  margin-top:22px;
 }
 
-.info select{
+.bloque h4{
+  margin-bottom:10px;
+  font-size:16px;
+}
+
+.colores,.tallas{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.color-circulo{
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  border:2px solid #777;
+  cursor:pointer;
+}
+
+.color-circulo.activo{
+  outline:3px solid white;
+}
+
+.talla-circulo{
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  border:1px solid #777;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  background:#1d1d1d;
+}
+
+.talla-circulo.activo{
+  background:#b97686;
+  border-color:#b97686;
+}
+
+.detalles{
+  margin-top:25px;
+  color:#ddd;
+  line-height:1.6;
+}
+
+.detalles ul{
+  padding-left:18px;
+}
+
+.tabla-medidas{
+  margin-top:18px;
   width:100%;
-  padding:13px;
-  border-radius:10px;
-  border:1px solid #ccc;
-  font-size:15px;
+  border-collapse:collapse;
+  font-size:14px;
+}
+
+.tabla-medidas th,.tabla-medidas td{
+  border:1px solid #555;
+  padding:9px;
+  text-align:center;
+}
+
+.tabla-medidas th{
+  background:#1b1b1b;
 }
 
 .btn-wsp{
@@ -190,10 +259,6 @@ body{
   cursor:pointer;
 }
 
-.btn-wsp:hover{
-  background:#a96173;
-}
-
 .wsp{
   position:fixed;
   right:25px;
@@ -201,7 +266,7 @@ body{
   width:58px;
   height:58px;
   background:#25D366;
-  color:#fff;
+  color:white;
   border-radius:50%;
   display:flex;
   align-items:center;
@@ -221,20 +286,14 @@ body{
     height:310px;
   }
 
-  .nav{
-    display:none;
-  }
+  .nav{display:none}
 
   .modal-content{
     grid-template-columns:1fr;
   }
 
-  .galeria{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .galeria img{
-    height:340px;
+  .foto-modal img{
+    height:430px;
   }
 }
 
@@ -254,9 +313,7 @@ body{
     padding:20px;
   }
 
-  .banner h1{
-    font-size:24px;
-  }
+  .banner h1{font-size:24px}
 
   .catalogo{
     width:94%;
@@ -268,11 +325,7 @@ body{
     height:250px;
   }
 
-  .producto h3{
-    font-size:14px;
-  }
-
-  .producto p{
+  .producto h3,.producto p{
     font-size:14px;
   }
 
@@ -280,8 +333,8 @@ body{
     padding:18px;
   }
 
-  .galeria img{
-    height:260px;
+  .foto-modal img{
+    height:360px;
   }
 
   .info h2{
@@ -314,43 +367,46 @@ body{
   <div class="modal-content">
     <button class="cerrar" onclick="cerrarModal()">×</button>
 
-    <div class="galeria" id="galeria"></div>
+    <div class="foto-modal">
+      <button class="flecha izq" onclick="cambiarFoto(-1)">‹</button>
+      <img id="fotoPrincipal" src="">
+      <button class="flecha der" onclick="cambiarFoto(1)">›</button>
+    </div>
 
     <div class="info">
       <h2 id="nombreProducto"></h2>
       <p class="precio" id="precioProducto"></p>
 
-      <label>Color</label>
-      <select id="color"></select>
+      <div class="bloque">
+        <h4>Color</h4>
+        <div class="colores" id="colores"></div>
+      </div>
 
-      <label>Talla</label>
-      <select id="talla"></select>
+      <div class="bloque">
+        <h4>Talla</h4>
+        <div class="tallas" id="tallas"></div>
+      </div>
 
-      <label>Departamento</label>
-      <select id="departamento">
-        <option value="Lima">Lima</option>
-      </select>
+      <div class="detalles">
+        <h4>Detalles de la prenda</h4>
+        <ul id="detallesProducto"></ul>
 
-      <label>Provincia</label>
-      <select id="provincia">
-        <option value="Lima">Lima</option>
-      </select>
+        <h4 style="margin-top:18px;">Recomendaciones</h4>
+        <ul id="recomendacionesProducto"></ul>
 
-      <label>Distrito</label>
-      <select id="distrito">
-        <option>San Juan de Lurigancho</option>
-        <option>Los Olivos</option>
-        <option>Comas</option>
-        <option>Independencia</option>
-        <option>San Martín de Porres</option>
-        <option>Cercado de Lima</option>
-        <option>La Victoria</option>
-        <option>Miraflores</option>
-        <option>San Isidro</option>
-        <option>Santiago de Surco</option>
-        <option>Chorrillos</option>
-        <option>Otro distrito</option>
-      </select>
+        <h4 style="margin-top:18px;">Tabla de medidas</h4>
+        <table class="tabla-medidas">
+          <thead>
+            <tr>
+              <th>Talla</th>
+              <th>Pecho</th>
+              <th>Largo</th>
+              <th>Manga</th>
+            </tr>
+          </thead>
+          <tbody id="tablaMedidas"></tbody>
+        </table>
+      </div>
 
       <button class="btn-wsp" onclick="pedirWhatsApp()">Pedir por WhatsApp</button>
     </div>
@@ -365,81 +421,230 @@ const productos = [
     nombre:"Pantalón Cargo Negro",
     precio:"S/ 89.90",
     descuento:10,
-    imagenes:[
-      "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=900",
-      "https://images.unsplash.com/photo-1516762689617-e1cffcef479d?w=900"
+    colores:[
+      {
+        nombre:"Negro",
+        codigo:"#000000",
+        imagenes:[
+          "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=900",
+          "https://images.unsplash.com/photo-1516762689617-e1cffcef479d?w=900"
+        ]
+      },
+      {
+        nombre:"Beige",
+        codigo:"#c8b18a",
+        imagenes:[
+          "https://images.unsplash.com/photo-1506629905607-d9e297d2a7dd?w=900",
+          "https://images.unsplash.com/photo-1523398002811-999ca8dec234?w=900"
+        ]
+      }
     ],
-    colores:["Negro","Plomo","Beige"],
-    tallas:["S","M","L","XL"]
+    tallas:["S","M","L","XL"],
+    detalles:["Tela resistente y cómoda","Fit urbano formal","Bolsillos laterales funcionales"],
+    recomendaciones:["Lavar con agua fría","No usar lejía","Planchar a temperatura baja"],
+    medidas:[
+      ["S","92 cm","98 cm","60 cm"],
+      ["M","96 cm","100 cm","61 cm"],
+      ["L","100 cm","102 cm","62 cm"],
+      ["XL","104 cm","104 cm","63 cm"]
+    ]
   },
   {
     nombre:"Polo Oversize Blanco",
     precio:"S/ 59.90",
     descuento:0,
-    imagenes:[
-      "https://images.unsplash.com/photo-1523398002811-999ca8dec234?w=900",
-      "https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?w=900"
+    colores:[
+      {
+        nombre:"Blanco",
+        codigo:"#ffffff",
+        imagenes:[
+          "https://images.unsplash.com/photo-1523398002811-999ca8dec234?w=900",
+          "https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?w=900"
+        ]
+      },
+      {
+        nombre:"Negro",
+        codigo:"#000000",
+        imagenes:[
+          "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=900",
+          "https://images.unsplash.com/photo-1516762689617-e1cffcef479d?w=900"
+        ]
+      }
     ],
-    colores:["Blanco","Negro"],
-    tallas:["S","M","L"]
+    tallas:["S","M","L"],
+    detalles:["Corte oversize","Algodón suave","Ideal para outfit urbano"],
+    recomendaciones:["Lavar al revés","Secar bajo sombra","No exprimir"],
+    medidas:[
+      ["S","98 cm","70 cm","22 cm"],
+      ["M","104 cm","72 cm","23 cm"],
+      ["L","110 cm","74 cm","24 cm"]
+    ]
   },
   {
     nombre:"Camisa Urbana",
     precio:"S/ 79.90",
     descuento:15,
-    imagenes:[
-      "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=900",
-      "https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=900"
+    colores:[
+      {
+        nombre:"Azul",
+        codigo:"#1f3d5c",
+        imagenes:[
+          "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=900",
+          "https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=900"
+        ]
+      },
+      {
+        nombre:"Blanco",
+        codigo:"#f5f5f5",
+        imagenes:[
+          "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=900",
+          "https://images.unsplash.com/photo-1602810319428-019690571b5b?w=900"
+        ]
+      }
     ],
-    colores:["Negro","Azul","Blanco"],
-    tallas:["M","L","XL"]
+    tallas:["M","L","XL"],
+    detalles:["Diseño formal urbano","Tela fresca","Perfecta para salidas casuales"],
+    recomendaciones:["Lavar a mano o ciclo suave","Colgar en gancho","Planchar al revés"],
+    medidas:[
+      ["M","100 cm","72 cm","61 cm"],
+      ["L","106 cm","74 cm","62 cm"],
+      ["XL","112 cm","76 cm","63 cm"]
+    ]
   },
   {
     nombre:"Casaca Formal Urbana",
     precio:"S/ 129.90",
     descuento:0,
-    imagenes:[
-      "https://images.unsplash.com/photo-1520975954732-35dd22299614?w=900",
-      "https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=900"
+    colores:[
+      {
+        nombre:"Negro",
+        codigo:"#000000",
+        imagenes:[
+          "https://images.unsplash.com/photo-1520975954732-35dd22299614?w=900",
+          "https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=900"
+        ]
+      },
+      {
+        nombre:"Marrón",
+        codigo:"#6b3f2a",
+        imagenes:[
+          "https://images.unsplash.com/photo-1520975867597-0af37a22e31e?w=900",
+          "https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=900"
+        ]
+      }
     ],
-    colores:["Negro","Marrón"],
-    tallas:["S","M","L","XL"]
+    tallas:["S","M","L","XL"],
+    detalles:["Acabado premium","Estilo urbano formal","Ideal para noche o eventos casuales"],
+    recomendaciones:["No lavar en máquina","Limpiar con paño húmedo","Guardar en colgador"],
+    medidas:[
+      ["S","96 cm","64 cm","61 cm"],
+      ["M","100 cm","66 cm","62 cm"],
+      ["L","104 cm","68 cm","63 cm"],
+      ["XL","108 cm","70 cm","64 cm"]
+    ]
   }
 ];
 
 const catalogo = document.getElementById("catalogo");
 let productoActual = null;
+let colorActual = 0;
+let tallaActual = "";
+let fotoActual = 0;
 
 productos.forEach((p,index)=>{
   catalogo.innerHTML += `
     <div class="producto" onclick="abrirModal(${index})">
       ${p.descuento ? `<span class="descuento">-${p.descuento}%</span>` : ""}
-      <img src="${p.imagenes[0]}" alt="${p.nombre}">
+      <img class="foto-producto" data-producto="${index}" src="${p.colores[0].imagenes[0]}" alt="${p.nombre}">
       <h3>${p.nombre}</h3>
       <p>${p.precio}</p>
     </div>
   `;
 });
 
+setInterval(()=>{
+  document.querySelectorAll(".foto-producto").forEach(img=>{
+    const index = img.dataset.producto;
+    const producto = productos[index];
+    const fotos = producto.colores[0].imagenes;
+    let actual = fotos.indexOf(img.src);
+    actual = actual === -1 || actual === fotos.length - 1 ? 0 : actual + 1;
+    img.src = fotos[actual];
+  });
+},4000);
+
 function abrirModal(index){
   productoActual = productos[index];
+  colorActual = 0;
+  tallaActual = productoActual.tallas[0];
+  fotoActual = 0;
 
   document.getElementById("nombreProducto").textContent = productoActual.nombre;
   document.getElementById("precioProducto").textContent = productoActual.precio;
 
-  document.getElementById("galeria").innerHTML = productoActual.imagenes.map(img =>
-    `<img src="${img}" alt="${productoActual.nombre}">`
-  ).join("");
-
-  document.getElementById("color").innerHTML = productoActual.colores.map(c =>
-    `<option value="${c}">${c}</option>`
-  ).join("");
-
-  document.getElementById("talla").innerHTML = productoActual.tallas.map(t =>
-    `<option value="${t}">${t}</option>`
-  ).join("");
+  cargarColor();
+  cargarTallas();
+  cargarDetalles();
 
   document.getElementById("modal").style.display = "flex";
+}
+
+function cargarColor(){
+  const color = productoActual.colores[colorActual];
+  fotoActual = 0;
+  document.getElementById("fotoPrincipal").src = color.imagenes[fotoActual];
+
+  document.getElementById("colores").innerHTML = productoActual.colores.map((c,i)=>`
+    <div class="color-circulo ${i===colorActual ? "activo" : ""}"
+         title="${c.nombre}"
+         onclick="seleccionarColor(${i})"
+         style="background:${c.codigo}"></div>
+  `).join("");
+}
+
+function seleccionarColor(i){
+  colorActual = i;
+  cargarColor();
+}
+
+function cargarTallas(){
+  document.getElementById("tallas").innerHTML = productoActual.tallas.map(t=>`
+    <div class="talla-circulo ${t===tallaActual ? "activo" : ""}"
+         onclick="seleccionarTalla('${t}')">${t}</div>
+  `).join("");
+}
+
+function seleccionarTalla(t){
+  tallaActual = t;
+  cargarTallas();
+}
+
+function cambiarFoto(direccion){
+  const fotos = productoActual.colores[colorActual].imagenes;
+  fotoActual += direccion;
+
+  if(fotoActual < 0) fotoActual = fotos.length - 1;
+  if(fotoActual >= fotos.length) fotoActual = 0;
+
+  document.getElementById("fotoPrincipal").src = fotos[fotoActual];
+}
+
+function cargarDetalles(){
+  document.getElementById("detallesProducto").innerHTML =
+    productoActual.detalles.map(d=>`<li>${d}</li>`).join("");
+
+  document.getElementById("recomendacionesProducto").innerHTML =
+    productoActual.recomendaciones.map(r=>`<li>${r}</li>`).join("");
+
+  document.getElementById("tablaMedidas").innerHTML =
+    productoActual.medidas.map(m=>`
+      <tr>
+        <td>${m[0]}</td>
+        <td>${m[1]}</td>
+        <td>${m[2]}</td>
+        <td>${m[3]}</td>
+      </tr>
+    `).join("");
 }
 
 function cerrarModal(){
@@ -447,23 +652,14 @@ function cerrarModal(){
 }
 
 function pedirWhatsApp(){
-  const color = document.getElementById("color").value;
-  const talla = document.getElementById("talla").value;
-  const departamento = document.getElementById("departamento").value;
-  const provincia = document.getElementById("provincia").value;
-  const distrito = document.getElementById("distrito").value;
+  const color = productoActual.colores[colorActual].nombre;
 
   const mensaje = `Hola BAUVARE, quiero realizar un pedido:
 
 Producto: ${productoActual.nombre}
 Color: ${color}
-Talla: ${talla}
-Precio: ${productoActual.precio}
-
-Ubicación:
-Departamento: ${departamento}
-Provincia: ${provincia}
-Distrito: ${distrito}`;
+Talla: ${tallaActual}
+Precio: ${productoActual.precio}`;
 
   const numero = "51999999999";
   window.open(`https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`, "_blank");
