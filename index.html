@@ -49,9 +49,6 @@ body{
   border-radius:14px;
 }
 
-.banner h1{font-size:32px}
-.banner p{margin-top:8px;color:#ccc}
-
 .catalogo{
   width:92%;
   margin:auto;
@@ -71,7 +68,7 @@ body{
 
 .producto img{
   width:100%;
-  height:430px;
+  aspect-ratio:3/4;
   object-fit:cover;
   border-radius:14px;
   background:#333;
@@ -97,7 +94,6 @@ body{
   font-size:14px;
 }
 
-/* MODAL */
 .modal{
   display:none;
   position:fixed;
@@ -117,7 +113,7 @@ body{
   max-height:92vh;
   overflow-y:auto;
   display:grid;
-  grid-template-columns:1.3fr 1fr;
+  grid-template-columns:1.25fr 1fr;
   gap:35px;
   padding:30px;
   border-radius:18px;
@@ -141,7 +137,7 @@ body{
 
 .foto-modal img{
   width:100%;
-  height:620px;
+  aspect-ratio:3/4;
   object-fit:cover;
   border-radius:14px;
   background:#333;
@@ -151,13 +147,13 @@ body{
   position:absolute;
   top:50%;
   transform:translateY(-50%);
-  width:42px;
-  height:42px;
+  width:44px;
+  height:44px;
   border:none;
   border-radius:50%;
   background:rgba(0,0,0,.55);
   color:white;
-  font-size:26px;
+  font-size:28px;
   cursor:pointer;
 }
 
@@ -172,12 +168,10 @@ body{
 .precio{
   font-size:24px;
   font-weight:bold;
-  margin-bottom:22px;
+  margin-bottom:20px;
 }
 
-.bloque{
-  margin-top:22px;
-}
+.bloque{margin-top:22px}
 
 .bloque h4{
   margin-bottom:10px;
@@ -191,20 +185,32 @@ body{
 }
 
 .color-circulo{
-  width:34px;
-  height:34px;
+  width:36px;
+  height:36px;
   border-radius:50%;
   border:2px solid #777;
   cursor:pointer;
+  position:relative;
 }
 
 .color-circulo.activo{
   outline:3px solid white;
 }
 
+.color-circulo.agotado::after{
+  content:"";
+  position:absolute;
+  width:46px;
+  height:2px;
+  background:red;
+  transform:rotate(-45deg);
+  top:16px;
+  left:-6px;
+}
+
 .talla-circulo{
-  width:42px;
-  height:42px;
+  width:44px;
+  height:44px;
   border-radius:50%;
   border:1px solid #777;
   display:flex;
@@ -212,6 +218,7 @@ body{
   justify-content:center;
   cursor:pointer;
   background:#1d1d1d;
+  position:relative;
 }
 
 .talla-circulo.activo{
@@ -219,10 +226,48 @@ body{
   border-color:#b97686;
 }
 
+.talla-circulo.agotado{
+  color:#888;
+}
+
+.talla-circulo.agotado::after{
+  content:"";
+  position:absolute;
+  width:48px;
+  height:2px;
+  background:red;
+  transform:rotate(-35deg);
+}
+
+.estado{
+  margin-top:15px;
+  font-weight:bold;
+}
+
+.disponible{color:#00e676}
+.agotado-texto{color:#ff5252}
+
+.cantidad{
+  display:flex;
+  align-items:center;
+  gap:15px;
+  margin-top:12px;
+}
+
+.cantidad button{
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  border:none;
+  font-size:20px;
+  cursor:pointer;
+}
+
 .detalles{
   margin-top:25px;
   color:#ddd;
   line-height:1.6;
+  padding-bottom:100px;
 }
 
 .detalles ul{
@@ -246,10 +291,13 @@ body{
   background:#1b1b1b;
 }
 
+.barra-compra{
+  margin-top:25px;
+}
+
 .btn-wsp{
   width:100%;
   padding:16px;
-  margin-top:28px;
   background:#b97686;
   color:white;
   border:none;
@@ -257,6 +305,11 @@ body{
   font-size:16px;
   font-weight:bold;
   cursor:pointer;
+}
+
+.btn-wsp:disabled{
+  background:#555;
+  cursor:not-allowed;
 }
 
 .wsp{
@@ -282,18 +335,10 @@ body{
     gap:18px;
   }
 
-  .producto img{
-    height:310px;
-  }
-
   .nav{display:none}
 
   .modal-content{
     grid-template-columns:1fr;
-  }
-
-  .foto-modal img{
-    height:430px;
   }
 }
 
@@ -313,32 +358,47 @@ body{
     padding:20px;
   }
 
-  .banner h1{font-size:24px}
-
   .catalogo{
     width:94%;
     grid-template-columns:repeat(2,1fr);
     gap:14px;
   }
 
-  .producto img{
-    height:250px;
-  }
-
   .producto h3,.producto p{
     font-size:14px;
   }
 
+  .modal{
+    padding:0;
+    align-items:flex-start;
+  }
+
   .modal-content{
+    width:100%;
+    min-height:100vh;
+    border-radius:0;
     padding:18px;
+    padding-bottom:120px;
   }
 
-  .foto-modal img{
-    height:360px;
+  .barra-compra{
+    position:fixed;
+    left:0;
+    right:0;
+    bottom:0;
+    background:#1b1b1b;
+    padding:14px 18px;
+    border-top:1px solid #444;
+    z-index:2000;
   }
 
-  .info h2{
-    font-size:24px;
+  .barra-compra .precio{
+    margin-bottom:10px;
+    font-size:20px;
+  }
+
+  .wsp{
+    display:none;
   }
 }
 </style>
@@ -375,7 +435,6 @@ body{
 
     <div class="info">
       <h2 id="nombreProducto"></h2>
-      <p class="precio" id="precioProducto"></p>
 
       <div class="bloque">
         <h4>Color</h4>
@@ -385,6 +444,17 @@ body{
       <div class="bloque">
         <h4>Talla</h4>
         <div class="tallas" id="tallas"></div>
+      </div>
+
+      <p class="estado" id="estadoProducto"></p>
+
+      <div class="bloque">
+        <h4>Cantidad</h4>
+        <div class="cantidad">
+          <button onclick="cambiarCantidad(-1)">−</button>
+          <strong id="cantidad">1</strong>
+          <button onclick="cambiarCantidad(1)">+</button>
+        </div>
       </div>
 
       <div class="detalles">
@@ -408,7 +478,10 @@ body{
         </table>
       </div>
 
-      <button class="btn-wsp" onclick="pedirWhatsApp()">Pedir por WhatsApp</button>
+      <div class="barra-compra">
+        <p class="precio" id="precioProducto"></p>
+        <button class="btn-wsp" id="btnWsp" onclick="pedirWhatsApp()">Pedir por WhatsApp</button>
+      </div>
     </div>
   </div>
 </div>
@@ -418,25 +491,38 @@ body{
 <script>
 const productos = [
   {
-    nombre:"Pantalón Cargo Negro",
+    nombre:"Pantalón Cargo",
     precio:"S/ 89.90",
     descuento:10,
     colores:[
       {
         nombre:"Negro",
         codigo:"#000000",
+        disponible:true,
         imagenes:[
           "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=900",
           "https://images.unsplash.com/photo-1516762689617-e1cffcef479d?w=900"
-        ]
+        ],
+        stock:{S:3,M:2,L:0,XL:1}
+      },
+      {
+        nombre:"Blanco",
+        codigo:"#ffffff",
+        disponible:true,
+        imagenes:[
+          "https://images.unsplash.com/photo-1523398002811-999ca8dec234?w=900",
+          "https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?w=900"
+        ],
+        stock:{S:2,M:2,L:0,XL:0}
       },
       {
         nombre:"Beige",
         codigo:"#c8b18a",
+        disponible:false,
         imagenes:[
-          "https://images.unsplash.com/photo-1506629905607-d9e297d2a7dd?w=900",
-          "https://images.unsplash.com/photo-1523398002811-999ca8dec234?w=900"
-        ]
+          "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=900"
+        ],
+        stock:{S:0,M:0,L:0,XL:0}
       }
     ],
     tallas:["S","M","L","XL"],
@@ -450,25 +536,29 @@ const productos = [
     ]
   },
   {
-    nombre:"Polo Oversize Blanco",
+    nombre:"Polo Oversize",
     precio:"S/ 59.90",
     descuento:0,
     colores:[
       {
         nombre:"Blanco",
         codigo:"#ffffff",
+        disponible:true,
         imagenes:[
           "https://images.unsplash.com/photo-1523398002811-999ca8dec234?w=900",
           "https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?w=900"
-        ]
+        ],
+        stock:{S:2,M:3,L:0}
       },
       {
         nombre:"Negro",
         codigo:"#000000",
+        disponible:true,
         imagenes:[
           "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=900",
           "https://images.unsplash.com/photo-1516762689617-e1cffcef479d?w=900"
-        ]
+        ],
+        stock:{S:0,M:1,L:1}
       }
     ],
     tallas:["S","M","L"],
@@ -479,123 +569,80 @@ const productos = [
       ["M","104 cm","72 cm","23 cm"],
       ["L","110 cm","74 cm","24 cm"]
     ]
-  },
-  {
-    nombre:"Camisa Urbana",
-    precio:"S/ 79.90",
-    descuento:15,
-    colores:[
-      {
-        nombre:"Azul",
-        codigo:"#1f3d5c",
-        imagenes:[
-          "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=900",
-          "https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=900"
-        ]
-      },
-      {
-        nombre:"Blanco",
-        codigo:"#f5f5f5",
-        imagenes:[
-          "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=900",
-          "https://images.unsplash.com/photo-1602810319428-019690571b5b?w=900"
-        ]
-      }
-    ],
-    tallas:["M","L","XL"],
-    detalles:["Diseño formal urbano","Tela fresca","Perfecta para salidas casuales"],
-    recomendaciones:["Lavar a mano o ciclo suave","Colgar en gancho","Planchar al revés"],
-    medidas:[
-      ["M","100 cm","72 cm","61 cm"],
-      ["L","106 cm","74 cm","62 cm"],
-      ["XL","112 cm","76 cm","63 cm"]
-    ]
-  },
-  {
-    nombre:"Casaca Formal Urbana",
-    precio:"S/ 129.90",
-    descuento:0,
-    colores:[
-      {
-        nombre:"Negro",
-        codigo:"#000000",
-        imagenes:[
-          "https://images.unsplash.com/photo-1520975954732-35dd22299614?w=900",
-          "https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=900"
-        ]
-      },
-      {
-        nombre:"Marrón",
-        codigo:"#6b3f2a",
-        imagenes:[
-          "https://images.unsplash.com/photo-1520975867597-0af37a22e31e?w=900",
-          "https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=900"
-        ]
-      }
-    ],
-    tallas:["S","M","L","XL"],
-    detalles:["Acabado premium","Estilo urbano formal","Ideal para noche o eventos casuales"],
-    recomendaciones:["No lavar en máquina","Limpiar con paño húmedo","Guardar en colgador"],
-    medidas:[
-      ["S","96 cm","64 cm","61 cm"],
-      ["M","100 cm","66 cm","62 cm"],
-      ["L","104 cm","68 cm","63 cm"],
-      ["XL","108 cm","70 cm","64 cm"]
-    ]
   }
 ];
 
 const catalogo = document.getElementById("catalogo");
+
 let productoActual = null;
 let colorActual = 0;
 let tallaActual = "";
 let fotoActual = 0;
+let cantidadActual = 1;
 
 productos.forEach((p,index)=>{
   catalogo.innerHTML += `
     <div class="producto" onclick="abrirModal(${index})">
       ${p.descuento ? `<span class="descuento">-${p.descuento}%</span>` : ""}
-      <img class="foto-producto" data-producto="${index}" src="${p.colores[0].imagenes[0]}" alt="${p.nombre}">
+      <img src="${p.colores[0].imagenes[0]}" alt="${p.nombre}">
       <h3>${p.nombre}</h3>
       <p>${p.precio}</p>
     </div>
   `;
 });
 
-setInterval(()=>{
-  document.querySelectorAll(".foto-producto").forEach(img=>{
-    const index = img.dataset.producto;
-    const producto = productos[index];
-    const fotos = producto.colores[0].imagenes;
-    let actual = fotos.indexOf(img.src);
-    actual = actual === -1 || actual === fotos.length - 1 ? 0 : actual + 1;
-    img.src = fotos[actual];
-  });
-},4000);
-
 function abrirModal(index){
   productoActual = productos[index];
   colorActual = 0;
   tallaActual = productoActual.tallas[0];
   fotoActual = 0;
+  cantidadActual = 1;
 
   document.getElementById("nombreProducto").textContent = productoActual.nombre;
   document.getElementById("precioProducto").textContent = productoActual.precio;
+  document.getElementById("cantidad").textContent = cantidadActual;
 
-  cargarColor();
-  cargarTallas();
-  cargarDetalles();
-
+  cargarTodo();
   document.getElementById("modal").style.display = "flex";
 }
 
-function cargarColor(){
-  const color = productoActual.colores[colorActual];
-  fotoActual = 0;
-  document.getElementById("fotoPrincipal").src = color.imagenes[fotoActual];
+function cargarTodo(){
+  cargarFoto();
+  cargarColores();
+  cargarTallas();
+  cargarDetalles();
+  verificarStock();
+}
 
+function cargarFoto(){
+  const fotos = productoActual.colores[colorActual].imagenes;
+  document.getElementById("fotoPrincipal").src = fotos[fotoActual];
+}
+
+function cambiarFoto(direccion){
+  const color = productoActual.colores[colorActual];
+  const fotosColor = color.imagenes;
+
+  fotoActual += direccion;
+
+  if(fotoActual >= fotosColor.length){
+    colorActual++;
+    if(colorActual >= productoActual.colores.length) colorActual = 0;
+    fotoActual = 0;
+  }
+
+  if(fotoActual < 0){
+    colorActual--;
+    if(colorActual < 0) colorActual = productoActual.colores.length - 1;
+    fotoActual = productoActual.colores[colorActual].imagenes.length - 1;
+  }
+
+  cargarTodo();
+}
+
+function cargarColores(){
   document.getElementById("colores").innerHTML = productoActual.colores.map((c,i)=>`
-    <div class="color-circulo ${i===colorActual ? "activo" : ""}"
+    <div class="color-circulo ${i===colorActual ? "activo" : ""} ${!c.disponible ? "agotado" : ""}"
          title="${c.nombre}"
          onclick="seleccionarColor(${i})"
          style="background:${c.codigo}"></div>
@@ -604,29 +651,57 @@ function cargarColor(){
 
 function seleccionarColor(i){
   colorActual = i;
-  cargarColor();
+  fotoActual = 0;
+  cargarTodo();
 }
 
 function cargarTallas(){
-  document.getElementById("tallas").innerHTML = productoActual.tallas.map(t=>`
-    <div class="talla-circulo ${t===tallaActual ? "activo" : ""}"
-         onclick="seleccionarTalla('${t}')">${t}</div>
-  `).join("");
+  const color = productoActual.colores[colorActual];
+
+  document.getElementById("tallas").innerHTML = productoActual.tallas.map(t=>{
+    const agotado = !color.stock[t] || color.stock[t] <= 0;
+
+    return `
+      <div class="talla-circulo ${t===tallaActual ? "activo" : ""} ${agotado ? "agotado" : ""}"
+           onclick="seleccionarTalla('${t}')">${t}</div>
+    `;
+  }).join("");
 }
 
 function seleccionarTalla(t){
   tallaActual = t;
-  cargarTallas();
+  cantidadActual = 1;
+  document.getElementById("cantidad").textContent = cantidadActual;
+  cargarTodo();
 }
 
-function cambiarFoto(direccion){
-  const fotos = productoActual.colores[colorActual].imagenes;
-  fotoActual += direccion;
+function verificarStock(){
+  const color = productoActual.colores[colorActual];
+  const stock = color.stock[tallaActual] || 0;
+  const estado = document.getElementById("estadoProducto");
+  const btn = document.getElementById("btnWsp");
 
-  if(fotoActual < 0) fotoActual = fotos.length - 1;
-  if(fotoActual >= fotos.length) fotoActual = 0;
+  if(stock > 0 && color.disponible){
+    estado.textContent = "Disponible";
+    estado.className = "estado disponible";
+    btn.disabled = false;
+  }else{
+    estado.textContent = "Agotado";
+    estado.className = "estado agotado-texto";
+    btn.disabled = true;
+  }
+}
 
-  document.getElementById("fotoPrincipal").src = fotos[fotoActual];
+function cambiarCantidad(num){
+  const color = productoActual.colores[colorActual];
+  const stock = color.stock[tallaActual] || 0;
+
+  cantidadActual += num;
+
+  if(cantidadActual < 1) cantidadActual = 1;
+  if(cantidadActual > stock) cantidadActual = stock;
+
+  document.getElementById("cantidad").textContent = cantidadActual;
 }
 
 function cargarDetalles(){
@@ -659,6 +734,7 @@ function pedirWhatsApp(){
 Producto: ${productoActual.nombre}
 Color: ${color}
 Talla: ${tallaActual}
+Cantidad: ${cantidadActual}
 Precio: ${productoActual.precio}`;
 
   const numero = "51999999999";
