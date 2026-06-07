@@ -1,12 +1,10 @@
-
 const productos = [
   {
     nombre: "Pantalón Cargo Negro",
     precio: "S/ 35",
     imagenes: [
-      "https://via.placeholder.com/600x800?text=Pantalon+Cargo+1",
-      "https://via.placeholder.com/600x800?text=Pantalon+Cargo+2",
-      "https://via.placeholder.com/600x800?text=Pantalon+Cargo+3"
+      "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=900",
+      "https://images.unsplash.com/photo-1516762689617-e1cffcef479d?w=900"
     ],
     colores: ["Negro", "Plomo", "Beige"],
     tallas: ["S", "M", "L", "XL"]
@@ -15,8 +13,8 @@ const productos = [
     nombre: "Polo Oversize Blanco",
     precio: "S/ 45",
     imagenes: [
-      "https://via.placeholder.com/600x800?text=Polo+Oversize+1",
-      "https://via.placeholder.com/600x800?text=Polo+Oversize+2"
+      "https://images.unsplash.com/photo-1523398002811-999ca8dec234?w=900",
+      "https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?w=900"
     ],
     colores: ["Blanco", "Negro"],
     tallas: ["S", "M", "L"]
@@ -25,8 +23,8 @@ const productos = [
     nombre: "Camisa Urbana",
     precio: "S/ 60",
     imagenes: [
-      "https://via.placeholder.com/600x800?text=Camisa+Urbana+1",
-      "https://via.placeholder.com/600x800?text=Camisa+Urbana+2"
+      "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=900",
+      "https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=900"
     ],
     colores: ["Negro", "Azul", "Blanco"],
     tallas: ["M", "L", "XL"]
@@ -35,8 +33,8 @@ const productos = [
     nombre: "Casaca Formal Urbana",
     precio: "S/ 95",
     imagenes: [
-      "https://via.placeholder.com/600x800?text=Casaca+1",
-      "https://via.placeholder.com/600x800?text=Casaca+2"
+      "https://images.unsplash.com/photo-1520975954732-35dd22299614?w=900",
+      "https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=900"
     ],
     colores: ["Negro", "Marrón"],
     tallas: ["S", "M", "L", "XL"]
