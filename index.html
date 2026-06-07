@@ -68,7 +68,7 @@ body{
   display:grid;
   grid-template-columns:repeat(4,1fr);
   gap:26px;
-  padding-bottom:80px;
+  padding-bottom:90px;
 }
 
 .producto{
@@ -353,10 +353,11 @@ body{
   cursor:not-allowed;
 }
 
+/* CARRITO FLOTANTE ABAJO DERECHA */
 .carrito-flotante{
   position:fixed;
-  right:22px;
-  bottom:22px;
+  right:18px;
+  bottom:18px;
   width:64px;
   height:64px;
   border-radius:50%;
@@ -396,7 +397,7 @@ body{
 }
 
 .carrito-box{
-  width:390px;
+  width:410px;
   max-width:100%;
   height:100%;
   background:#242424;
@@ -410,13 +411,26 @@ body{
 }
 
 .item-carrito{
+  display:grid;
+  grid-template-columns:80px 1fr;
+  gap:12px;
   border-bottom:1px solid #444;
   padding:14px 0;
+}
+
+.item-carrito img{
+  width:80px;
+  height:105px;
+  object-fit:contain;
+  background:#333;
+  border-radius:10px;
+  padding:5px;
 }
 
 .item-carrito p{
   color:#ccc;
   margin-top:4px;
+  font-size:14px;
 }
 
 .eliminar{
@@ -433,6 +447,28 @@ body{
   margin-top:20px;
   border-top:1px solid #555;
   padding-top:15px;
+}
+
+/* ANIMACIÓN AGREGADO */
+.toast{
+  position:fixed;
+  left:50%;
+  bottom:25px;
+  transform:translateX(-50%) translateY(30px);
+  background:#00a86b;
+  color:white;
+  padding:13px 20px;
+  border-radius:30px;
+  font-weight:bold;
+  opacity:0;
+  pointer-events:none;
+  z-index:4000;
+  transition:.35s;
+}
+
+.toast.mostrar{
+  opacity:1;
+  transform:translateX(-50%) translateY(0);
 }
 
 @media(max-width:900px){
@@ -515,8 +551,15 @@ body{
   }
 
   .carrito-flotante{
-    right:18px;
-    bottom:95px;
+    right:16px;
+    bottom:82px;
+    width:58px;
+    height:58px;
+  }
+
+  .toast{
+    bottom:155px;
+    font-size:14px;
   }
 }
 </style>
@@ -616,6 +659,8 @@ body{
     <button class="btn-main" style="margin-top:18px;" onclick="pedirTodoWhatsApp()">Pedir todo por WhatsApp</button>
   </div>
 </div>
+
+<div class="toast" id="toast">Producto agregado al carrito</div>
 
 <script>
 /* ======================================================
@@ -866,18 +911,32 @@ function cargarDetalles(){
 
 function agregarAlCarrito(){
   const color = productoActual.colores[colorActual];
+
   const item = {
     nombre: productoActual.nombre,
     color: color.nombre,
     talla: tallaActual,
     cantidad: cantidadActual,
-    precio: productoActual.precio
+    precio: productoActual.precio,
+    foto: color.imagenes[0]
   };
 
   carrito.push(item);
   actualizarCarrito();
-  cerrarModal();
-  abrirCarrito();
+  mostrarToast();
+
+  cantidadActual = 1;
+  document.getElementById("cantidad").textContent = cantidadActual;
+  actualizarPrecio();
+}
+
+function mostrarToast(){
+  const toast = document.getElementById("toast");
+  toast.classList.add("mostrar");
+
+  setTimeout(()=>{
+    toast.classList.remove("mostrar");
+  },1600);
 }
 
 function actualizarCarrito(){
@@ -906,12 +965,16 @@ function renderCarrito(){
 
   contenedor.innerHTML = carrito.map((item,index)=>`
     <div class="item-carrito">
-      <strong>${item.nombre}</strong>
-      <p>Color: ${item.color}</p>
-      <p>Talla: ${item.talla}</p>
-      <p>Cantidad: ${item.cantidad}</p>
-      <p>Subtotal: S/ ${(item.precio * item.cantidad).toFixed(2)}</p>
-      <button class="eliminar" onclick="eliminarItem(${index})">Eliminar</button>
+      <img src="${item.foto}" alt="${item.nombre}">
+      <div>
+        <strong>${item.nombre}</strong>
+        <p>Color: ${item.color}</p>
+        <p>Talla: ${item.talla}</p>
+        <p>Cantidad: ${item.cantidad}</p>
+        <p>Precio unitario: S/ ${item.precio.toFixed(2)}</p>
+        <p>Subtotal: S/ ${(item.precio * item.cantidad).toFixed(2)}</p>
+        <button class="eliminar" onclick="eliminarItem(${index})">Eliminar</button>
+      </div>
     </div>
   `).join("");
 
@@ -957,6 +1020,7 @@ ${index + 1}. ${item.nombre}
 Color: ${item.color}
 Talla: ${item.talla}
 Cantidad: ${item.cantidad}
+Precio unitario: S/ ${item.precio.toFixed(2)}
 Subtotal: S/ ${(item.precio * item.cantidad).toFixed(2)}
 `).join("");
 
