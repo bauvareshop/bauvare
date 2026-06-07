@@ -1,12 +1,93 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BAUVARE</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BAUVARE</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+  <header>
     <h1>BAUVARE</h1>
-    <p>Próximamente disponible.</p>
+    <p>Urban formal wear</p>
+  </header>
+
+  <main>
+    <section class="catalogo" id="catalogo"></section>
+  </main>
+
+  <div class="modal" id="modal">
+    <div class="modal-contenido">
+      <span class="cerrar" onclick="cerrarModal()">×</span>
+
+      <div class="modal-galeria" id="modalGaleria"></div>
+
+      <div class="modal-info">
+        <h2 id="modalNombre"></h2>
+        <p id="modalPrecio"></p>
+
+        <label>Color:</label>
+        <select id="colorSeleccionado"></select>
+
+        <label>Talla:</label>
+        <select id="tallaSeleccionada"></select>
+
+        <button onclick="pedirWhatsApp()">Pedir por WhatsApp</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="productos.js"></script>
+  <script>
+    const catalogo = document.getElementById("catalogo");
+    let productoActual = null;
+
+    productos.forEach((producto, index) => {
+      catalogo.innerHTML += `
+        <div class="producto" onclick="abrirModal(${index})">
+          <img src="${producto.imagenes[0]}" alt="${producto.nombre}">
+          <h3>${producto.nombre}</h3>
+          <p>${producto.precio}</p>
+        </div>
+      `;
+    });
+
+    function abrirModal(index) {
+      productoActual = productos[index];
+
+      document.getElementById("modalNombre").textContent = productoActual.nombre;
+      document.getElementById("modalPrecio").textContent = productoActual.precio;
+
+      document.getElementById("modalGaleria").innerHTML = productoActual.imagenes.map(img =>
+        `<img src="${img}" alt="${productoActual.nombre}">`
+      ).join("");
+
+      document.getElementById("colorSeleccionado").innerHTML = productoActual.colores.map(color =>
+        `<option value="${color}">${color}</option>`
+      ).join("");
+
+      document.getElementById("tallaSeleccionada").innerHTML = productoActual.tallas.map(talla =>
+        `<option value="${talla}">${talla}</option>`
+      ).join("");
+
+      document.getElementById("modal").style.display = "flex";
+    }
+
+    function cerrarModal() {
+      document.getElementById("modal").style.display = "none";
+    }
+
+    function pedirWhatsApp() {
+      const color = document.getElementById("colorSeleccionado").value;
+      const talla = document.getElementById("tallaSeleccionada").value;
+
+      const mensaje = `Hola, quiero pedir: ${productoActual.nombre}, color ${color}, talla ${talla}, precio ${productoActual.precio}`;
+      const numero = "51999999999";
+
+      window.open(`https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`, "_blank");
+    }
+  </script>
+
 </body>
 </html>
