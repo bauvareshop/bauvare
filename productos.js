@@ -1,7 +1,8 @@
 const productos = [
   {
     nombre: "Pantalón Cargo Negro",
-    precio: "S/ 35",
+    precio: "S/ 89.90",
+    descuento: 10,
     imagenes: [
       "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=900",
       "https://images.unsplash.com/photo-1516762689617-e1cffcef479d?w=900"
@@ -11,7 +12,8 @@ const productos = [
   },
   {
     nombre: "Polo Oversize Blanco",
-    precio: "S/ 45",
+    precio: "S/ 59.90",
+    descuento: 0,
     imagenes: [
       "https://images.unsplash.com/photo-1523398002811-999ca8dec234?w=900",
       "https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?w=900"
@@ -21,7 +23,8 @@ const productos = [
   },
   {
     nombre: "Camisa Urbana",
-    precio: "S/ 60",
+    precio: "S/ 79.90",
+    descuento: 15,
     imagenes: [
       "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=900",
       "https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=900"
@@ -31,7 +34,8 @@ const productos = [
   },
   {
     nombre: "Casaca Formal Urbana",
-    precio: "S/ 95",
+    precio: "S/ 129.90",
+    descuento: 0,
     imagenes: [
       "https://images.unsplash.com/photo-1520975954732-35dd22299614?w=900",
       "https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=900"
