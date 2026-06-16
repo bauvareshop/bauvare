@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BAUVARE | Catálogo</title>
 
-<!-- Google Fonts para mejor tipografía -->
+<!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
@@ -13,14 +13,14 @@
 
 body{
   font-family:'Inter',Arial,sans-serif;
-  background:#242424;
-  color:white;
+  background:#0a0a0a;
+  color:#e8e8e8;
 }
 
 /* ===== HEADER ===== */
 .header{
   height:82px;
-  background:#151515;
+  background:#0a0a0a;
   display:flex;
   align-items:center;
   justify-content:space-between;
@@ -28,7 +28,7 @@ body{
   position:sticky;
   top:0;
   z-index:100;
-  border-bottom:1px solid #333;
+  border-bottom:1px solid #222;
 }
 
 .logo img{
@@ -43,30 +43,31 @@ body{
 }
 
 .redes a{
-  color:white;
+  color:#e8e8e8;
   text-decoration:none;
   font-size:14px;
-  border:1px solid #555;
+  border:1px solid #333;
   padding:8px 12px;
   border-radius:20px;
   transition:all .3s;
 }
 
 .redes a:hover{
-  background:#555555;
-  border-color:#555555;
+  background:#d4af37;
+  border-color:#d4af37;
+  color:#0a0a0a;
 }
 
-/* ===== PRESENTACIÓN ULTRA COMPACTA ===== */
+/* ===== PRESENTACIÓN ===== */
 .presentacion{
   width:92%;
   max-width:1000px;
   margin:12px auto 20px;
   text-align:center;
   padding:8px 16px;
-  background:rgba(26,26,26,.4);
+  background:rgba(20,20,20,.6);
   border-radius:10px;
-  border-left:3px solid #555555;
+  border-left:3px solid #d4af37;
   backdrop-filter:blur(8px);
   -webkit-backdrop-filter:blur(8px);
 }
@@ -75,17 +76,19 @@ body{
   font-size:22px;
   letter-spacing:4px;
   font-weight:800;
-  background:linear-gradient(135deg,#fff 0%,#555555 100%);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
+  color:#e8e8e8;
   margin-bottom:0px;
   line-height:1.2;
+}
+
+.presentacion-inner h1 span{
+  color:#d4af37;
 }
 
 .presentacion-inner .frase{
   font-size:11px;
   font-style:italic;
-  color:#555555;
+  color:#d4af37;
   font-weight:500;
   letter-spacing:0.3px;
   opacity:.85;
@@ -143,42 +146,42 @@ body{
   cursor:pointer;
   position:relative;
   transition:transform .3s;
+  background:#141414;
+  border-radius:12px;
+  padding:12px;
+  border:1px solid #222;
 }
 
 .producto:hover{
   transform:translateY(-5px);
+  border-color:#d4af37;
 }
 
 .producto img{
   width:100%;
   aspect-ratio:3/4;
-  object-fit:contain;
-  background:#2b2b2b;
-  padding:8px;
-  border-radius:12px;
+  object-fit:cover;
+  background:#1a1a1a;
+  border-radius:8px;
   transition:.3s;
-  border:2px solid transparent;
-}
-
-.producto:hover img{
-  border-color:#555555;
 }
 
 .producto h3{
   margin-top:10px;
-  font-size:16px;
+  font-size:15px;
   font-weight:500;
+  color:#e8e8e8;
 }
 
 .producto .precio-tarjeta{
   margin-top:6px;
   font-weight:700;
   font-size:18px;
-  color:#EFBF04;
+  color:#d4af37;
 }
 
 .producto .precio-tarjeta .precio-original{
-  color:#888;
+  color:#666;
   font-size:14px;
   text-decoration:line-through;
   margin-left:10px;
@@ -187,12 +190,13 @@ body{
 
 .descuento{
   position:absolute;
-  top:10px;
-  left:10px;
-  background:#555555;
-  padding:6px 11px;
-  border-radius:18px;
-  font-size:13px;
+  top:18px;
+  left:18px;
+  background:#d4af37;
+  color:#0a0a0a;
+  padding:4px 10px;
+  border-radius:12px;
+  font-size:12px;
   font-weight:700;
 }
 
@@ -201,7 +205,7 @@ body{
   display:none;
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,.92);
+  background:rgba(0,0,0,.95);
   z-index:1000;
   align-items:center;
   justify-content:center;
@@ -215,7 +219,7 @@ body{
 }
 
 .modal-content{
-  background:#2b2b2b;
+  background:#141414;
   width:95%;
   max-width:1180px;
   max-height:92vh;
@@ -226,6 +230,7 @@ body{
   padding:26px;
   border-radius:18px;
   position:relative;
+  border:1px solid #222;
 }
 
 .cerrar{
@@ -234,7 +239,7 @@ body{
   right:18px;
   font-size:34px;
   background:none;
-  color:white;
+  color:#e8e8e8;
   border:none;
   cursor:pointer;
   z-index:5;
@@ -243,6 +248,7 @@ body{
 
 .cerrar:hover{
   transform:rotate(90deg);
+  color:#d4af37;
 }
 
 .foto-modal{
@@ -255,8 +261,8 @@ body{
   width:100%;
   max-height:78vh;
   aspect-ratio:3/4;
-  object-fit:contain;
-  background:#1d1d1d;
+  object-fit:cover;
+  background:#1a1a1a;
   padding:10px;
   border-radius:14px;
 }
@@ -269,15 +275,18 @@ body{
   height:42px;
   border:none;
   border-radius:50%;
-  background:rgba(0,0,0,.7);
-  color:white;
+  background:rgba(0,0,0,.8);
+  color:#e8e8e8;
   font-size:27px;
   cursor:pointer;
   transition:all .3s;
+  border:1px solid #333;
 }
 
 .flecha:hover{
-  background:#555555;
+  background:#d4af37;
+  color:#0a0a0a;
+  border-color:#d4af37;
 }
 
 .flecha.izq{left:12px}
@@ -295,6 +304,7 @@ body{
   font-size:30px;
   margin-bottom:8px;
   font-weight:700;
+  color:#e8e8e8;
 }
 
 .bloque{
@@ -304,7 +314,7 @@ body{
 .bloque h4{
   margin-bottom:10px;
   font-weight:600;
-  color:#ddd;
+  color:#aaa;
 }
 
 .colores,.tallas{
@@ -317,7 +327,7 @@ body{
   width:36px;
   height:36px;
   border-radius:50%;
-  border:2px solid #777;
+  border:2px solid #444;
   cursor:pointer;
   position:relative;
   transition:all .3s;
@@ -328,7 +338,7 @@ body{
 }
 
 .color-circulo.activo{
-  outline:3px solid white;
+  outline:3px solid #d4af37;
   outline-offset:2px;
 }
 
@@ -347,30 +357,32 @@ body{
   width:45px;
   height:45px;
   border-radius:50%;
-  border:2px solid #777;
+  border:2px solid #444;
   display:flex;
   align-items:center;
   justify-content:center;
   cursor:pointer;
-  background:#1d1d1d;
+  background:#1a1a1a;
   position:relative;
   transition:all .3s;
   font-weight:600;
+  color:#e8e8e8;
 }
 
 .talla-circulo:hover:not(.agotado){
   transform:scale(1.05);
-  border-color:#555555;
+  border-color:#d4af37;
 }
 
 .talla-circulo.activo{
-  background:#555555;
-  border-color:#555555;
-  box-shadow:0 0 20px rgba(185,118,134,.3);
+  background:#d4af37;
+  border-color:#d4af37;
+  color:#0a0a0a;
+  box-shadow:0 0 20px rgba(212,175,55,.2);
 }
 
 .talla-circulo.agotado{
-  color:#888;
+  color:#555;
   cursor:not-allowed;
 }
 
@@ -385,7 +397,7 @@ body{
 
 .stock-disponible{
   font-size:13px;
-  color:#00e676;
+  color:#aaa;
   margin-top:4px;
 }
 
@@ -394,7 +406,7 @@ body{
   font-weight:bold;
 }
 
-.disponible{color:#00e676}
+.disponible{color:#4caf50}
 .agotado-texto{color:#ff5252}
 
 .cantidad{
@@ -407,33 +419,36 @@ body{
 .cantidad button{
   width:36px;
   height:36px;
-  border:none;
+  border:1px solid #333;
   border-radius:50%;
   font-size:20px;
   cursor:pointer;
-  background:#3d3d3d;
-  color:white;
+  background:#1a1a1a;
+  color:#e8e8e8;
   transition:all .3s;
 }
 
 .cantidad button:hover{
-  background:#555555;
+  background:#d4af37;
+  color:#0a0a0a;
+  border-color:#d4af37;
 }
 
 .cantidad strong{
   font-size:20px;
   min-width:30px;
   text-align:center;
+  color:#e8e8e8;
 }
 
 .detalles{
   margin-top:22px;
-  color:#ccc;
+  color:#aaa;
   line-height:1.6;
 }
 
 .detalles h4{
-  color:#ddd;
+  color:#ccc;
   margin-top:18px;
 }
 
@@ -449,26 +464,27 @@ body{
 }
 
 .tabla-medidas th,.tabla-medidas td{
-  border:1px solid #555;
+  border:1px solid #333;
   padding:9px;
   text-align:center;
+  color:#ccc;
 }
 
 .tabla-medidas th{
-  background:#1b1b1b;
-  color:#555555;
+  background:#0a0a0a;
+  color:#d4af37;
 }
 
 .medidas-nota{
   font-size:12px;
-  color:#888;
+  color:#555;
   margin-top:8px;
 }
 
 /* ===== BARRA DE COMPRA ===== */
 .barra-compra{
-  background:#1a1a1a;
-  border:1px solid #444;
+  background:#0a0a0a;
+  border:1px solid #222;
   padding:18px;
   border-radius:14px;
   margin-top:25px;
@@ -478,11 +494,11 @@ body{
   font-size:26px;
   font-weight:800;
   margin-bottom:6px;
-  color:#555555;
+  color:#d4af37;
 }
 
 .precio .precio-descuento{
-  color:#888;
+  color:#555;
   font-size:18px;
   text-decoration:line-through;
   margin-left:12px;
@@ -490,7 +506,7 @@ body{
 }
 
 .precio-unitario{
-  color:#aaa;
+  color:#666;
   font-size:13px;
   margin-bottom:12px;
 }
@@ -498,8 +514,8 @@ body{
 .btn-main{
   width:100%;
   padding:15px;
-  background:linear-gradient(135deg,#555555 0%,#a06070 100%);
-  color:white;
+  background:#d4af37;
+  color:#0a0a0a;
   border:none;
   border-radius:12px;
   font-size:16px;
@@ -514,18 +530,21 @@ body{
 
 .btn-main:hover:not(:disabled){
   transform:translateY(-2px);
-  box-shadow:0 8px 25px rgba(185,118,134,.3);
+  box-shadow:0 8px 25px rgba(212,175,55,.3);
+  background:#c9a84c;
 }
 
 .btn-main:disabled{
-  background:#555;
+  background:#222;
+  color:#555;
   cursor:not-allowed;
   opacity:.6;
 }
 
 .btn-main.agotado-btn{
-  background:#444;
+  background:#1a1a1a;
   color:#ff5252;
+  border:1px solid #ff5252;
 }
 
 /* ===== CARRITO FLOTANTE ===== */
@@ -536,15 +555,15 @@ body{
   width:64px;
   height:64px;
   border-radius:50%;
-  background:linear-gradient(135deg,#555555 0%,#a06070 100%);
-  color:white;
+  background:#d4af37;
+  color:#0a0a0a;
   display:flex;
   align-items:center;
   justify-content:center;
   cursor:pointer;
   z-index:999;
   font-size:25px;
-  box-shadow:0 4px 18px rgba(185,118,134,.4);
+  box-shadow:0 4px 18px rgba(212,175,55,.3);
   transition:all .3s;
 }
 
@@ -565,6 +584,7 @@ body{
   justify-content:center;
   font-size:12px;
   font-weight:bold;
+  color:#fff;
 }
 
 /* ===== PANEL CARRITO ===== */
@@ -572,7 +592,7 @@ body{
   display:none;
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,.75);
+  background:rgba(0,0,0,.9);
   z-index:2500;
   justify-content:flex-end;
   animation:fadeIn .3s;
@@ -582,10 +602,11 @@ body{
   width:420px;
   max-width:100%;
   height:100%;
-  background:#242424;
+  background:#0a0a0a;
   padding:24px;
   overflow-y:auto;
   position:relative;
+  border-left:1px solid #222;
   animation:slideIn .3s;
 }
 
@@ -597,21 +618,22 @@ body{
 .carrito-box h2{
   margin-bottom:20px;
   font-weight:700;
+  color:#e8e8e8;
 }
 
 .item-carrito{
   display:grid;
   grid-template-columns:80px 1fr;
   gap:12px;
-  border-bottom:1px solid #444;
+  border-bottom:1px solid #222;
   padding:14px 0;
 }
 
 .item-carrito img{
   width:80px;
   height:105px;
-  object-fit:contain;
-  background:#333;
+  object-fit:cover;
+  background:#1a1a1a;
   border-radius:10px;
   padding:5px;
 }
@@ -624,19 +646,20 @@ body{
 
 .item-carrito .item-info strong{
   font-size:15px;
+  color:#e8e8e8;
 }
 
 .item-carrito .item-info p{
-  color:#ccc;
+  color:#888;
   font-size:13px;
   margin:0;
 }
 
 .eliminar{
   margin-top:6px;
-  background:#444;
-  color:white;
-  border:none;
+  background:#1a1a1a;
+  color:#e8e8e8;
+  border:1px solid #333;
   padding:6px 12px;
   border-radius:8px;
   cursor:pointer;
@@ -646,27 +669,30 @@ body{
 
 .eliminar:hover{
   background:#ff5252;
+  border-color:#ff5252;
+  color:#fff;
 }
 
 .resumen{
   margin-top:20px;
-  border-top:1px solid #555;
+  border-top:1px solid #222;
   padding-top:15px;
 }
 
 .resumen p{
   margin:4px 0;
   font-size:14px;
+  color:#aaa;
 }
 
 .resumen .descuento-line{
-  color:#00e676;
+  color:#d4af37;
 }
 
 .resumen h3{
   font-size:22px;
   margin-top:8px;
-  color:#555555;
+  color:#d4af37;
 }
 
 /* ===== TOAST ===== */
@@ -675,8 +701,8 @@ body{
   left:50%;
   bottom:25px;
   transform:translateX(-50%) translateY(30px);
-  background:#00a86b;
-  color:white;
+  background:#4caf50;
+  color:#fff;
   padding:15px 25px;
   border-radius:30px;
   font-weight:600;
@@ -687,7 +713,7 @@ body{
   display:flex;
   align-items:center;
   gap:10px;
-  box-shadow:0 8px 30px rgba(0,168,107,.3);
+  box-shadow:0 8px 30px rgba(76,175,80,.3);
 }
 
 .toast.mostrar{
@@ -723,8 +749,8 @@ body{
     position:sticky;
     bottom:0;
     margin-top:20px;
-    background:#1a1a1a;
-    border:2px solid #555555;
+    background:#0a0a0a;
+    border:2px solid #d4af37;
     border-radius:14px;
     padding:18px;
   }
@@ -758,6 +784,10 @@ body{
 
   .producto .precio-tarjeta{
     font-size:15px;
+  }
+
+  .producto{
+    padding:8px;
   }
 
   .modal{
@@ -824,15 +854,15 @@ body{
     <img src="https://i.postimg.cc/Vvt9Dv1K/logitobauvareeditable.jpg" alt="BAUVARE">
   </div>
   <div class="redes">
-    <a href="https://www.instagram.com/" target="_blank">📸 Instagram</a>
-    <a href="https://www.tiktok.com/" target="_blank">🎵 TikTok</a>
+    <a href="https://www.instagram.com/" target="_blank">Instagram</a>
+    <a href="https://www.tiktok.com/" target="_blank">TikTok</a>
   </div>
 </header>
 
-<!-- ===== PRESENTACIÓN CORREGIDA (ULTRA COMPACTA) ===== -->
+<!-- ===== PRESENTACIÓN ===== -->
 <section class="presentacion">
   <div class="presentacion-inner">
-    <h1>BAUVARE</h1>
+    <h1>BAU<span>VARE</span></h1>
     <p class="frase">✦ No seguimos tendencias, construimos identidad ✦</p>
   </div>
 </section>
@@ -854,12 +884,12 @@ body{
       <h2 id="nombreProducto"></h2>
 
       <div class="bloque">
-        <h4>🎨 Color</h4>
+        <h4>Color</h4>
         <div class="colores" id="colores"></div>
       </div>
 
       <div class="bloque">
-        <h4>📏 Talla</h4>
+        <h4>Talla</h4>
         <div class="tallas" id="tallas"></div>
         <div class="stock-disponible" id="stockInfo"></div>
       </div>
@@ -867,7 +897,7 @@ body{
       <p class="estado" id="estadoProducto"></p>
 
       <div class="bloque">
-        <h4>📦 Cantidad</h4>
+        <h4>Cantidad</h4>
         <div class="cantidad">
           <button onclick="cambiarCantidad(-1)">−</button>
           <strong id="cantidad">1</strong>
@@ -876,14 +906,14 @@ body{
       </div>
 
       <div class="detalles">
-        <h4>📋 Detalles de la prenda</h4>
+        <h4>Detalles de la prenda</h4>
         <ul id="detallesProducto"></ul>
 
-        <h4>💡 Recomendaciones</h4>
+        <h4>Recomendaciones</h4>
         <ul id="recomendacionesProducto"></ul>
 
-        <h4>📐 Tabla de medidas</h4>
-        <p class="medidas-nota">📏 Medidas en centímetros (usa una cinta métrica para tomar tus medidas)</p>
+        <h4>Tabla de medidas</h4>
+        <p class="medidas-nota">Medidas en centímetros</p>
         <table class="tabla-medidas">
           <thead>
             <tr>
@@ -901,7 +931,7 @@ body{
         <p class="precio" id="precioProducto"></p>
         <p class="precio-unitario" id="precioUnitario"></p>
         <button class="btn-main" id="btnAgregar" onclick="agregarAlCarrito()">
-          🛒 Agregar al carrito
+          Agregar al carrito
         </button>
       </div>
     </div>
@@ -918,20 +948,20 @@ body{
 <div class="carrito-panel" id="carritoPanel">
   <div class="carrito-box">
     <button class="cerrar" onclick="cerrarCarrito()">×</button>
-    <h2>🛒 Mi pedido</h2>
+    <h2>Mi pedido</h2>
     <div id="itemsCarrito"></div>
     <div class="resumen" id="resumenCarrito"></div>
     <button class="btn-main" style="margin-top:18px;" onclick="pedirTodoWhatsApp()">
-      💬 Pedir todo por WhatsApp
+      Pedir todo por WhatsApp
     </button>
-    <button class="btn-main" style="margin-top:10px;background:#444;" onclick="cerrarCarrito()">
-      ↻ Seguir comprando
+    <button class="btn-main" style="margin-top:10px;background:#1a1a1a;color:#888;" onclick="cerrarCarrito()">
+      Seguir comprando
     </button>
   </div>
 </div>
 
 <!-- ===== TOAST ===== -->
-<div class="toast" id="toast">✅ Producto agregado al carrito</div>
+<div class="toast" id="toast">Producto agregado al carrito</div>
 
 <script>
 /* ======================================================
@@ -946,18 +976,18 @@ const descuentoPorMayor = {
 };
 
 /* ======================================================
-   PRODUCTOS
+   PRODUCTOS (8 PRODUCTOS)
    ====================================================== */
 
 const productos = [
   {
-    nombre:"Pantalón Cargo",
+    nombre:"Pantalón Cargo Negro",
     precio:89.90,
     descuento:10,
     colores:[
       {
         nombre:"Negro",
-        codigo:"#000000",
+        codigo:"#1a1a1a",
         disponible:true,
         imagenes:[
           "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=900",
@@ -966,8 +996,8 @@ const productos = [
         stock:{S:3,M:2,L:0,XL:1}
       },
       {
-        nombre:"Blanco",
-        codigo:"#ffffff",
+        nombre:"Gris",
+        codigo:"#666666",
         disponible:true,
         imagenes:[
           "https://images.unsplash.com/photo-1523398002811-999ca8dec234?w=900",
@@ -987,13 +1017,13 @@ const productos = [
     ]
   },
   {
-    nombre:"Polo Oversize",
+    nombre:"Polo Oversize Blanco",
     precio:59.90,
     descuento:0,
     colores:[
       {
         nombre:"Blanco",
-        codigo:"#ffffff",
+        codigo:"#f0f0f0",
         disponible:true,
         imagenes:[
           "https://images.unsplash.com/photo-1523398002811-999ca8dec234?w=900",
@@ -1003,7 +1033,7 @@ const productos = [
       },
       {
         nombre:"Negro",
-        codigo:"#000000",
+        codigo:"#1a1a1a",
         disponible:true,
         imagenes:[
           "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=900",
@@ -1019,6 +1049,222 @@ const productos = [
       ["S","98 cm","70 cm","22 cm"],
       ["M","104 cm","72 cm","23 cm"],
       ["L","110 cm","74 cm","24 cm"]
+    ]
+  },
+  {
+    nombre:"Chaqueta Denim",
+    precio:129.90,
+    descuento:15,
+    colores:[
+      {
+        nombre:"Azul Oscuro",
+        codigo:"#1a2a4a",
+        disponible:true,
+        imagenes:[
+          "https://images.unsplash.com/photo-1539533018447-63fcce2678e3?w=900",
+          "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=900"
+        ],
+        stock:{S:1,M:2,L:3,XL:1}
+      },
+      {
+        nombre:"Negro",
+        codigo:"#1a1a1a",
+        disponible:true,
+        imagenes:[
+          "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=900",
+          "https://images.unsplash.com/photo-1539533018447-63fcce2678e3?w=900"
+        ],
+        stock:{S:0,M:1,L:2,XL:1}
+      }
+    ],
+    tallas:["S","M","L","XL"],
+    detalles:["Denim de alta calidad","Corte clásico","Cierre metálico"],
+    recomendaciones:["Lavar en frío","No usar secadora","Planchar al revés"],
+    medidas:[
+      ["S","104 cm","62 cm","58 cm"],
+      ["M","108 cm","64 cm","59 cm"],
+      ["L","112 cm","66 cm","60 cm"],
+      ["XL","116 cm","68 cm","61 cm"]
+    ]
+  },
+  {
+    nombre:"Jogger Deportivo",
+    precio:79.90,
+    descuento:0,
+    colores:[
+      {
+        nombre:"Gris",
+        codigo:"#888888",
+        disponible:true,
+        imagenes:[
+          "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?w=900",
+          "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=900"
+        ],
+        stock:{S:4,M:3,L:2,XL:1}
+      },
+      {
+        nombre:"Negro",
+        codigo:"#1a1a1a",
+        disponible:true,
+        imagenes:[
+          "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=900",
+          "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?w=900"
+        ],
+        stock:{S:2,M:2,L:1,XL:0}
+      }
+    ],
+    tallas:["S","M","L","XL"],
+    detalles:["Tejido elástico","Ajuste perfecto","Bolsillos con cierre"],
+    recomendaciones:["Lavar a 30°","No usar suavizante","Secar al aire"],
+    medidas:[
+      ["S","96 cm","98 cm","22 cm"],
+      ["M","100 cm","100 cm","23 cm"],
+      ["L","104 cm","102 cm","24 cm"],
+      ["XL","108 cm","104 cm","25 cm"]
+    ]
+  },
+  {
+    nombre:"Camisa Formal",
+    precio:99.90,
+    descuento:10,
+    colores:[
+      {
+        nombre:"Blanco",
+        codigo:"#f0f0f0",
+        disponible:true,
+        imagenes:[
+          "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=900",
+          "https://images.unsplash.com/photo-1523398002811-999ca8dec234?w=900"
+        ],
+        stock:{S:2,M:3,L:2,XL:1}
+      },
+      {
+        nombre:"Negro",
+        codigo:"#1a1a1a",
+        disponible:true,
+        imagenes:[
+          "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=900",
+          "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=900"
+        ],
+        stock:{S:1,M:2,L:2,XL:0}
+      }
+    ],
+    tallas:["S","M","L","XL"],
+    detalles:["Tela premium","Corte slim fit","Puños ajustables"],
+    recomendaciones:["Lavar en seco","Planchar con vapor","Colgar en perchas"],
+    medidas:[
+      ["S","94 cm","74 cm","62 cm"],
+      ["M","98 cm","76 cm","63 cm"],
+      ["L","102 cm","78 cm","64 cm"],
+      ["XL","106 cm","80 cm","65 cm"]
+    ]
+  },
+  {
+    nombre:"Short Urbano",
+    precio:49.90,
+    descuento:0,
+    colores:[
+      {
+        nombre:"Negro",
+        codigo:"#1a1a1a",
+        disponible:true,
+        imagenes:[
+          "https://images.unsplash.com/photo-1591195853828-11db59d44e6a?w=900",
+          "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=900"
+        ],
+        stock:{S:3,M:4,L:2,XL:1}
+      },
+      {
+        nombre:"Beige",
+        codigo:"#d4c5a0",
+        disponible:true,
+        imagenes:[
+          "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=900",
+          "https://images.unsplash.com/photo-1591195853828-11db59d44e6a?w=900"
+        ],
+        stock:{S:2,M:2,L:1,XL:0}
+      }
+    ],
+    tallas:["S","M","L","XL"],
+    detalles:["Tela fresca","Estilo casual","Elástico en la cintura"],
+    recomendaciones:["Lavar con agua fría","No planchar","Secar a la sombra"],
+    medidas:[
+      ["S","78 cm","42 cm","--"],
+      ["M","82 cm","44 cm","--"],
+      ["L","86 cm","46 cm","--"],
+      ["XL","90 cm","48 cm","--"]
+    ]
+  },
+  {
+    nombre:"Sudadera Hoodie",
+    precio:109.90,
+    descuento:20,
+    colores:[
+      {
+        nombre:"Negro",
+        codigo:"#1a1a1a",
+        disponible:true,
+        imagenes:[
+          "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=900",
+          "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=900"
+        ],
+        stock:{S:2,M:2,L:1,XL:1}
+      },
+      {
+        nombre:"Gris",
+        codigo:"#888888",
+        disponible:true,
+        imagenes:[
+          "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=900",
+          "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=900"
+        ],
+        stock:{S:1,M:2,L:1,XL:0}
+      }
+    ],
+    tallas:["S","M","L","XL"],
+    detalles:["Felpa suave","Capucha ajustable","Bolsillo canguro"],
+    recomendaciones:["Lavar al revés","No usar secadora","Planchar al revés"],
+    medidas:[
+      ["S","104 cm","66 cm","64 cm"],
+      ["M","108 cm","68 cm","65 cm"],
+      ["L","112 cm","70 cm","66 cm"],
+      ["XL","116 cm","72 cm","67 cm"]
+    ]
+  },
+  {
+    nombre:"Blazer Elegante",
+    precio:149.90,
+    descuento:10,
+    colores:[
+      {
+        nombre:"Negro",
+        codigo:"#1a1a1a",
+        disponible:true,
+        imagenes:[
+          "https://images.unsplash.com/photo-1583744946564-b52ac1c389c8?w=900",
+          "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=900"
+        ],
+        stock:{S:1,M:2,L:2,XL:1}
+      },
+      {
+        nombre:"Gris",
+        codigo:"#888888",
+        disponible:true,
+        imagenes:[
+          "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=900",
+          "https://images.unsplash.com/photo-1583744946564-b52ac1c389c8?w=900"
+        ],
+        stock:{S:0,M:1,L:2,XL:0}
+      }
+    ],
+    tallas:["S","M","L","XL"],
+    detalles:["Tela de lana","Corte estructurado","Bolsillos laterales"],
+    recomendaciones:["Lavar en seco","Colgar en perchas","No planchar directamente"],
+    medidas:[
+      ["S","102 cm","72 cm","60 cm"],
+      ["M","106 cm","74 cm","61 cm"],
+      ["L","110 cm","76 cm","62 cm"],
+      ["XL","114 cm","78 cm","63 cm"]
     ]
   }
 ];
@@ -1115,16 +1361,14 @@ function cargarColores(){
     <div class="color-circulo ${i===colorActual ? "activo" : ""} ${!c.disponible ? "agotado" : ""}"
          title="${c.nombre}"
          onclick="seleccionarColor(${i})"
-         style="background:${c.codigo}; ${c.codigo === '#ffffff' ? 'border-color:#888;' : ''}"></div>
+         style="background:${c.codigo}; ${c.codigo === '#f0f0f0' ? 'border-color:#666;' : ''}"></div>
   `).join("");
 }
 
 function seleccionarColor(i){
   colorActual = i;
-  // Verificar si la talla actual tiene stock en el nuevo color
   const color = productoActual.colores[colorActual];
   if(!color.stock[tallaActual] || color.stock[tallaActual] <= 0){
-    // Buscar primera talla con stock
     const tallaConStock = productoActual.tallas.find(t => color.stock[t] && color.stock[t] > 0);
     tallaActual = tallaConStock || productoActual.tallas[0];
   }
@@ -1166,18 +1410,18 @@ function verificarStock(){
   const stockInfo = document.getElementById("stockInfo");
 
   if(stock > 0 && color.disponible){
-    estado.textContent = "✅ Disponible";
+    estado.textContent = "✓ Disponible";
     estado.className = "estado disponible";
     btn.disabled = false;
     btn.className = "btn-main";
-    btn.innerHTML = "🛒 Agregar al carrito";
-    stockInfo.textContent = `📦 Quedan ${stock} unidades`;
+    btn.innerHTML = "Agregar al carrito";
+    stockInfo.textContent = `Quedan ${stock} unidades`;
   }else{
-    estado.textContent = "❌ Agotado";
+    estado.textContent = "✕ Agotado";
     estado.className = "estado agotado-texto";
     btn.disabled = true;
     btn.className = "btn-main agotado-btn";
-    btn.innerHTML = "⛔ Agotado";
+    btn.innerHTML = "Agotado";
     stockInfo.textContent = "Sin stock disponible";
   }
 }
@@ -1250,7 +1494,7 @@ function agregarAlCarrito(){
 
   carrito.push(item);
   actualizarCarrito();
-  mostrarToast("✅ Producto agregado al carrito");
+  mostrarToast("Producto agregado al carrito");
 
   cantidadActual = 1;
   document.getElementById("cantidad").textContent = cantidadActual;
@@ -1259,7 +1503,7 @@ function agregarAlCarrito(){
 
 function mostrarToast(mensaje){
   const toast = document.getElementById("toast");
-  toast.textContent = mensaje;
+  toast.textContent = "✓ " + mensaje;
   toast.classList.add("mostrar");
 
   setTimeout(()=>{
@@ -1290,7 +1534,7 @@ function renderCarrito(){
   const resumen = document.getElementById("resumenCarrito");
 
   if(carrito.length === 0){
-    contenedor.innerHTML = "<p style='color:#888;text-align:center;padding:30px 0;'>🛒 Tu carrito está vacío</p>";
+    contenedor.innerHTML = "<p style='color:#555;text-align:center;padding:30px 0;'>Tu carrito está vacío</p>";
     resumen.innerHTML = "";
     return;
   }
@@ -1300,11 +1544,11 @@ function renderCarrito(){
       <img src="${item.foto}" alt="${item.nombre}">
       <div class="item-info">
         <strong>${item.nombre}</strong>
-        <p>🎨 ${item.color}</p>
-        <p>📏 ${item.talla}</p>
-        <p>📦 ${item.cantidad} unidad${item.cantidad > 1 ? 'es' : ''}</p>
-        <p style="color:#555555;font-weight:600;">S/ ${(item.precio * item.cantidad).toFixed(2)}</p>
-        <button class="eliminar" onclick="eliminarItem(${index})">🗑️ Eliminar</button>
+        <p>${item.color}</p>
+        <p>Talla: ${item.talla}</p>
+        <p>Cantidad: ${item.cantidad}</p>
+        <p style="color:#d4af37;font-weight:600;">S/ ${(item.precio * item.cantidad).toFixed(2)}</p>
+        <button class="eliminar" onclick="eliminarItem(${index})">Eliminar</button>
       </div>
     </div>
   `).join("");
@@ -1320,10 +1564,10 @@ function renderCarrito(){
   const total = subtotal - descuento;
 
   resumen.innerHTML = `
-    <p>📦 Prendas: ${cantidadTotal}</p>
-    <p>💰 Subtotal: S/ ${subtotal.toFixed(2)}</p>
-    ${descuento > 0 ? `<p class="descuento-line">🎉 Descuento por ${descuentoPorMayor.desdeCantidad}+ prendas: -S/ ${descuento.toFixed(2)}</p>` : `<p style="color:#888;font-size:13px;">💡 Lleva ${descuentoPorMayor.desdeCantidad} prendas y obtén ${descuentoPorMayor.porcentaje}% de descuento</p>`}
-    <h3>💰 Total: S/ ${total.toFixed(2)}</h3>
+    <p>Prendas: ${cantidadTotal}</p>
+    <p>Subtotal: S/ ${subtotal.toFixed(2)}</p>
+    ${descuento > 0 ? `<p class="descuento-line">Descuento por ${descuentoPorMayor.desdeCantidad}+ prendas: -S/ ${descuento.toFixed(2)}</p>` : `<p style="color:#555;font-size:13px;">Lleva ${descuentoPorMayor.desdeCantidad} prendas y obtén ${descuentoPorMayor.porcentaje}% de descuento</p>`}
+    <h3>Total: S/ ${total.toFixed(2)}</h3>
   `;
 }
 
@@ -1360,10 +1604,10 @@ ${index + 1}. ${item.nombre}
 
 ${detalle}
 ────────────────────
-📦 Prendas: ${cantidadTotal}
-💰 Subtotal: S/ ${subtotal.toFixed(2)}
-🎉 Descuento: S/ ${descuento.toFixed(2)}
-💵 Total: S/ ${total.toFixed(2)}`;
+Prendas: ${cantidadTotal}
+Subtotal: S/ ${subtotal.toFixed(2)}
+Descuento: S/ ${descuento.toFixed(2)}
+Total: S/ ${total.toFixed(2)}`;
 
   window.open(`https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`, "_blank");
 }
