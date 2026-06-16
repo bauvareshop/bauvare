@@ -59,7 +59,6 @@ body{
 }
 
 /* ===== PRESENTACIÓN ===== */
-/* ===== PRESENTACIÓN ===== */
 .presentacion{
   width:92%;
   max-width:1000px;
@@ -68,7 +67,7 @@ body{
   padding:8px 16px;
   background:rgba(20,20,20,.6);
   border-radius:10px;
-  border-left:3px solid #d4af37; /* ← Solo el borde mantiene dorado */
+  border-left:3px solid #d4af37;
   backdrop-filter:blur(8px);
   -webkit-backdrop-filter:blur(8px);
 }
@@ -77,7 +76,7 @@ body{
   font-size:22px;
   letter-spacing:4px;
   font-weight:800;
-  color:#e8e8e8; /* ← BLANCO */
+  color:#e8e8e8;
   margin-bottom:0px;
   line-height:1.2;
 }
@@ -85,10 +84,10 @@ body{
 .presentacion-inner .frase{
   font-size:11px;
   font-style:italic;
-  color:#e8e8e8; /* ← BLANCO */
+  color:#e8e8e8;
   font-weight:500;
   letter-spacing:0.3px;
-  opacity:.7; /* ← Más sutil */
+  opacity:.7;
   margin:0;
 }
 
@@ -453,23 +452,16 @@ body{
   padding-left:18px;
 }
 
-.tabla-medidas{
+/* ===== TABLA DE MEDIDAS COMO IMAGEN ===== */
+.tabla-medidas-imagen{
   margin-top:14px;
   width:100%;
-  border-collapse:collapse;
-  font-size:14px;
 }
 
-.tabla-medidas th,.tabla-medidas td{
-  border:1px solid #333;
-  padding:9px;
-  text-align:center;
-  color:#ccc;
-}
-
-.tabla-medidas th{
-  background:#0a0a0a;
-  color:#d4af37;
+.tabla-medidas-imagen img{
+  width:100%;
+  border-radius:10px;
+  border:1px solid #222;
 }
 
 .medidas-nota{
@@ -506,6 +498,11 @@ body{
   color:#666;
   font-size:13px;
   margin-bottom:12px;
+}
+
+.precio-unitario .precio-mayor{
+  color:#d4af37;
+  font-weight:700;
 }
 
 .btn-main{
@@ -859,7 +856,7 @@ body{
 <!-- ===== PRESENTACIÓN ===== -->
 <section class="presentacion">
   <div class="presentacion-inner">
-    <h1>BAU<span>VARE</span></h1>
+    <h1>BAUVARE</h1>
     <p class="frase">✦ No seguimos tendencias, construimos identidad ✦</p>
   </div>
 </section>
@@ -910,18 +907,12 @@ body{
         <ul id="recomendacionesProducto"></ul>
 
         <h4>Tabla de medidas</h4>
-        <p class="medidas-nota">Medidas en centímetros</p>
-        <table class="tabla-medidas">
-          <thead>
-            <tr>
-              <th>Talla</th>
-              <th>Pecho</th>
-              <th>Largo</th>
-              <th>Manga</th>
-            </tr>
-          </thead>
-          <tbody id="tablaMedidas"></tbody>
-        </table>
+        <p class="medidas-nota">📏 Guía de tallas</p>
+        <!-- ===== IMAGEN DE MEDIDAS ===== -->
+        <div class="tabla-medidas-imagen">
+          <img src="https://via.placeholder.com/800x400/222/d4af37?text=Tu+Tabla+de+Medidas" alt="Tabla de medidas BAUVARE">
+        </div>
+        <!-- ===== FIN IMAGEN DE MEDIDAS ===== -->
       </div>
 
       <div class="barra-compra">
@@ -965,12 +956,7 @@ body{
    CONFIGURACIÓN
    ====================================================== */
 
-const numeroWhatsApp = "51926677046";
-
-const descuentoPorMayor = {
-  desdeCantidad: 3,
-  porcentaje: 10
-};
+const numeroWhatsApp = "51999999999";
 
 /* ======================================================
    PRODUCTOS (8 PRODUCTOS)
@@ -979,8 +965,8 @@ const descuentoPorMayor = {
 const productos = [
   {
     nombre:"Pantalón Cargo Negro",
-    precio:89.90,
-    descuento:10,
+    precio:35.00,
+    descuento:0,
     colores:[
       {
         nombre:"Negro",
@@ -990,7 +976,7 @@ const productos = [
           "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=900",
           "https://images.unsplash.com/photo-1516762689617-e1cffcef479d?w=900"
         ],
-        stock:{S:3,M:2,L:0,XL:1}
+        stock:{S:5,M:5,L:5,XL:5}
       },
       {
         nombre:"Gris",
@@ -1000,22 +986,16 @@ const productos = [
           "https://images.unsplash.com/photo-1523398002811-999ca8dec234?w=900",
           "https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?w=900"
         ],
-        stock:{S:2,M:2,L:0,XL:0}
+        stock:{S:3,M:3,L:3,XL:3}
       }
     ],
     tallas:["S","M","L","XL"],
     detalles:["Tela resistente y cómoda","Fit urbano formal","Bolsillos laterales funcionales"],
-    recomendaciones:["Lavar con agua fría","No usar lejía","Planchar a temperatura baja"],
-    medidas:[
-      ["S","92 cm","98 cm","60 cm"],
-      ["M","96 cm","100 cm","61 cm"],
-      ["L","100 cm","102 cm","62 cm"],
-      ["XL","104 cm","104 cm","63 cm"]
-    ]
+    recomendaciones:["Lavar con agua fría","No usar lejía","Planchar a temperatura baja"]
   },
   {
     nombre:"Polo Oversize Blanco",
-    precio:59.90,
+    precio:29.90,
     descuento:0,
     colores:[
       {
@@ -1026,7 +1006,7 @@ const productos = [
           "https://images.unsplash.com/photo-1523398002811-999ca8dec234?w=900",
           "https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?w=900"
         ],
-        stock:{S:2,M:3,L:0}
+        stock:{S:5,M:5,L:5}
       },
       {
         nombre:"Negro",
@@ -1036,22 +1016,17 @@ const productos = [
           "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=900",
           "https://images.unsplash.com/photo-1516762689617-e1cffcef479d?w=900"
         ],
-        stock:{S:0,M:1,L:1}
+        stock:{S:3,M:3,L:3}
       }
     ],
     tallas:["S","M","L"],
     detalles:["Corte oversize","Algodón suave","Ideal para outfit urbano"],
-    recomendaciones:["Lavar al revés","Secar bajo sombra","No exprimir"],
-    medidas:[
-      ["S","98 cm","70 cm","22 cm"],
-      ["M","104 cm","72 cm","23 cm"],
-      ["L","110 cm","74 cm","24 cm"]
-    ]
+    recomendaciones:["Lavar al revés","Secar bajo sombra","No exprimir"]
   },
   {
     nombre:"Chaqueta Denim",
-    precio:129.90,
-    descuento:15,
+    precio:49.90,
+    descuento:0,
     colores:[
       {
         nombre:"Azul Oscuro",
@@ -1061,7 +1036,7 @@ const productos = [
           "https://images.unsplash.com/photo-1539533018447-63fcce2678e3?w=900",
           "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=900"
         ],
-        stock:{S:1,M:2,L:3,XL:1}
+        stock:{S:3,M:4,L:4,XL:3}
       },
       {
         nombre:"Negro",
@@ -1071,22 +1046,16 @@ const productos = [
           "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=900",
           "https://images.unsplash.com/photo-1539533018447-63fcce2678e3?w=900"
         ],
-        stock:{S:0,M:1,L:2,XL:1}
+        stock:{S:2,M:3,L:3,XL:2}
       }
     ],
     tallas:["S","M","L","XL"],
     detalles:["Denim de alta calidad","Corte clásico","Cierre metálico"],
-    recomendaciones:["Lavar en frío","No usar secadora","Planchar al revés"],
-    medidas:[
-      ["S","104 cm","62 cm","58 cm"],
-      ["M","108 cm","64 cm","59 cm"],
-      ["L","112 cm","66 cm","60 cm"],
-      ["XL","116 cm","68 cm","61 cm"]
-    ]
+    recomendaciones:["Lavar en frío","No usar secadora","Planchar al revés"]
   },
   {
     nombre:"Jogger Deportivo",
-    precio:79.90,
+    precio:39.90,
     descuento:0,
     colores:[
       {
@@ -1097,7 +1066,7 @@ const productos = [
           "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?w=900",
           "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=900"
         ],
-        stock:{S:4,M:3,L:2,XL:1}
+        stock:{S:5,M:5,L:5,XL:4}
       },
       {
         nombre:"Negro",
@@ -1107,23 +1076,17 @@ const productos = [
           "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=900",
           "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?w=900"
         ],
-        stock:{S:2,M:2,L:1,XL:0}
+        stock:{S:3,M:3,L:3,XL:2}
       }
     ],
     tallas:["S","M","L","XL"],
     detalles:["Tejido elástico","Ajuste perfecto","Bolsillos con cierre"],
-    recomendaciones:["Lavar a 30°","No usar suavizante","Secar al aire"],
-    medidas:[
-      ["S","96 cm","98 cm","22 cm"],
-      ["M","100 cm","100 cm","23 cm"],
-      ["L","104 cm","102 cm","24 cm"],
-      ["XL","108 cm","104 cm","25 cm"]
-    ]
+    recomendaciones:["Lavar a 30°","No usar suavizante","Secar al aire"]
   },
   {
     nombre:"Camisa Formal",
-    precio:99.90,
-    descuento:10,
+    precio:45.00,
+    descuento:0,
     colores:[
       {
         nombre:"Blanco",
@@ -1133,7 +1096,7 @@ const productos = [
           "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=900",
           "https://images.unsplash.com/photo-1523398002811-999ca8dec234?w=900"
         ],
-        stock:{S:2,M:3,L:2,XL:1}
+        stock:{S:3,M:4,L:4,XL:3}
       },
       {
         nombre:"Negro",
@@ -1143,22 +1106,16 @@ const productos = [
           "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=900",
           "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=900"
         ],
-        stock:{S:1,M:2,L:2,XL:0}
+        stock:{S:2,M:3,L:3,XL:2}
       }
     ],
     tallas:["S","M","L","XL"],
     detalles:["Tela premium","Corte slim fit","Puños ajustables"],
-    recomendaciones:["Lavar en seco","Planchar con vapor","Colgar en perchas"],
-    medidas:[
-      ["S","94 cm","74 cm","62 cm"],
-      ["M","98 cm","76 cm","63 cm"],
-      ["L","102 cm","78 cm","64 cm"],
-      ["XL","106 cm","80 cm","65 cm"]
-    ]
+    recomendaciones:["Lavar en seco","Planchar con vapor","Colgar en perchas"]
   },
   {
     nombre:"Short Urbano",
-    precio:49.90,
+    precio:25.00,
     descuento:0,
     colores:[
       {
@@ -1169,7 +1126,7 @@ const productos = [
           "https://images.unsplash.com/photo-1591195853828-11db59d44e6a?w=900",
           "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=900"
         ],
-        stock:{S:3,M:4,L:2,XL:1}
+        stock:{S:5,M:5,L:5,XL:4}
       },
       {
         nombre:"Beige",
@@ -1179,23 +1136,17 @@ const productos = [
           "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=900",
           "https://images.unsplash.com/photo-1591195853828-11db59d44e6a?w=900"
         ],
-        stock:{S:2,M:2,L:1,XL:0}
+        stock:{S:3,M:3,L:3,XL:2}
       }
     ],
     tallas:["S","M","L","XL"],
     detalles:["Tela fresca","Estilo casual","Elástico en la cintura"],
-    recomendaciones:["Lavar con agua fría","No planchar","Secar a la sombra"],
-    medidas:[
-      ["S","78 cm","42 cm","--"],
-      ["M","82 cm","44 cm","--"],
-      ["L","86 cm","46 cm","--"],
-      ["XL","90 cm","48 cm","--"]
-    ]
+    recomendaciones:["Lavar con agua fría","No planchar","Secar a la sombra"]
   },
   {
     nombre:"Sudadera Hoodie",
-    precio:109.90,
-    descuento:20,
+    precio:55.00,
+    descuento:0,
     colores:[
       {
         nombre:"Negro",
@@ -1205,7 +1156,7 @@ const productos = [
           "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=900",
           "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=900"
         ],
-        stock:{S:2,M:2,L:1,XL:1}
+        stock:{S:4,M:4,L:4,XL:3}
       },
       {
         nombre:"Gris",
@@ -1215,23 +1166,17 @@ const productos = [
           "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=900",
           "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=900"
         ],
-        stock:{S:1,M:2,L:1,XL:0}
+        stock:{S:2,M:3,L:3,XL:2}
       }
     ],
     tallas:["S","M","L","XL"],
     detalles:["Felpa suave","Capucha ajustable","Bolsillo canguro"],
-    recomendaciones:["Lavar al revés","No usar secadora","Planchar al revés"],
-    medidas:[
-      ["S","104 cm","66 cm","64 cm"],
-      ["M","108 cm","68 cm","65 cm"],
-      ["L","112 cm","70 cm","66 cm"],
-      ["XL","116 cm","72 cm","67 cm"]
-    ]
+    recomendaciones:["Lavar al revés","No usar secadora","Planchar al revés"]
   },
   {
     nombre:"Blazer Elegante",
-    precio:149.90,
-    descuento:10,
+    precio:65.00,
+    descuento:0,
     colores:[
       {
         nombre:"Negro",
@@ -1241,7 +1186,7 @@ const productos = [
           "https://images.unsplash.com/photo-1583744946564-b52ac1c389c8?w=900",
           "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=900"
         ],
-        stock:{S:1,M:2,L:2,XL:1}
+        stock:{S:3,M:4,L:4,XL:3}
       },
       {
         nombre:"Gris",
@@ -1251,18 +1196,12 @@ const productos = [
           "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=900",
           "https://images.unsplash.com/photo-1583744946564-b52ac1c389c8?w=900"
         ],
-        stock:{S:0,M:1,L:2,XL:0}
+        stock:{S:2,M:3,L:3,XL:2}
       }
     ],
     tallas:["S","M","L","XL"],
     detalles:["Tela de lana","Corte estructurado","Bolsillos laterales"],
-    recomendaciones:["Lavar en seco","Colgar en perchas","No planchar directamente"],
-    medidas:[
-      ["S","102 cm","72 cm","60 cm"],
-      ["M","106 cm","74 cm","61 cm"],
-      ["L","110 cm","76 cm","62 cm"],
-      ["XL","114 cm","78 cm","63 cm"]
-    ]
+    recomendaciones:["Lavar en seco","Colgar en perchas","No planchar directamente"]
   }
 ];
 
@@ -1437,21 +1376,37 @@ function cambiarCantidad(num){
   actualizarPrecio();
 }
 
-/* ===== PRECIO ===== */
+/* ===== PRECIO CON DESCUENTO POR MAYOR ===== */
+function calcularPrecioConDescuento(cantidad, precioUnitario){
+  // Descuento por mayor: 3 o más de la misma prenda = 15% de descuento
+  if(cantidad >= 3){
+    return precioUnitario * 0.85; // 15% de descuento
+  }
+  return precioUnitario;
+}
+
 function actualizarPrecio(){
-  const precioConDescuento = productoActual.descuento ? 
-    productoActual.precio * (1 - productoActual.descuento/100) : 
-    productoActual.precio;
-  
+  const precioBase = productoActual.precio;
+  const precioConDescuento = calcularPrecioConDescuento(cantidadActual, precioBase);
   const total = precioConDescuento * cantidadActual;
   
   let precioHTML = `S/ ${total.toFixed(2)}`;
-  if(productoActual.descuento){
-    precioHTML += ` <span class="precio-descuento">S/ ${(productoActual.precio * cantidadActual).toFixed(2)}</span>`;
+  
+  // Mostrar precio original tachado si aplica descuento
+  if(cantidadActual >= 3){
+    const precioOriginalTotal = precioBase * cantidadActual;
+    precioHTML += ` <span class="precio-descuento">S/ ${precioOriginalTotal.toFixed(2)}</span>`;
   }
   
   document.getElementById("precioProducto").innerHTML = precioHTML;
-  document.getElementById("precioUnitario").textContent = `Precio unitario: S/ ${precioConDescuento.toFixed(2)}`;
+  
+  // Mostrar precio unitario con o sin descuento
+  let unitarioText = `Precio unitario: S/ ${precioBase.toFixed(2)}`;
+  if(cantidadActual >= 3){
+    unitarioText = `Precio unitario: S/ ${precioConDescuento.toFixed(2)} `;
+    unitarioText += `<span class="precio-mayor">(Ahorras ${((precioBase - precioConDescuento) * 100 / precioBase).toFixed(0)}% por llevar ${cantidadActual} unidades)</span>`;
+  }
+  document.getElementById("precioUnitario").innerHTML = unitarioText;
 }
 
 /* ===== DETALLES ===== */
@@ -1461,31 +1416,20 @@ function cargarDetalles(){
 
   document.getElementById("recomendacionesProducto").innerHTML =
     productoActual.recomendaciones.map(r=>`<li>${r}</li>`).join("");
-
-  document.getElementById("tablaMedidas").innerHTML =
-    productoActual.medidas.map(m=>`
-      <tr>
-        <td>${m[0]}</td>
-        <td>${m[1]}</td>
-        <td>${m[2]}</td>
-        <td>${m[3]}</td>
-      </tr>
-    `).join("");
 }
 
 /* ===== CARRITO ===== */
 function agregarAlCarrito(){
   const color = productoActual.colores[colorActual];
-  const precioConDescuento = productoActual.descuento ? 
-    productoActual.precio * (1 - productoActual.descuento/100) : 
-    productoActual.precio;
+  const precioConDescuento = calcularPrecioConDescuento(cantidadActual, productoActual.precio);
 
   const item = {
     nombre: productoActual.nombre,
     color: color.nombre,
     talla: tallaActual,
     cantidad: cantidadActual,
-    precio: precioConDescuento,
+    precio: productoActual.precio, // Precio base
+    precioDescuento: precioConDescuento, // Precio con descuento por mayor
     foto: color.imagenes[0]
   };
 
@@ -1544,27 +1488,24 @@ function renderCarrito(){
         <p>${item.color}</p>
         <p>Talla: ${item.talla}</p>
         <p>Cantidad: ${item.cantidad}</p>
-        <p style="color:#d4af37;font-weight:600;">S/ ${(item.precio * item.cantidad).toFixed(2)}</p>
+        <p style="color:#d4af37;font-weight:600;">S/ ${(item.precioDescuento * item.cantidad).toFixed(2)}</p>
         <button class="eliminar" onclick="eliminarItem(${index})">Eliminar</button>
       </div>
     </div>
   `).join("");
 
-  const cantidadTotal = carrito.reduce((sum,item)=>sum + item.cantidad,0);
-  const subtotal = carrito.reduce((sum,item)=>sum + (item.precio * item.cantidad),0);
-
-  let descuento = 0;
-  if(cantidadTotal >= descuentoPorMayor.desdeCantidad){
-    descuento = subtotal * descuentoPorMayor.porcentaje / 100;
-  }
-
-  const total = subtotal - descuento;
+  let subtotal = 0;
+  let cantidadTotal = 0;
+  
+  carrito.forEach(item => {
+    cantidadTotal += item.cantidad;
+    subtotal += item.precioDescuento * item.cantidad;
+  });
 
   resumen.innerHTML = `
     <p>Prendas: ${cantidadTotal}</p>
     <p>Subtotal: S/ ${subtotal.toFixed(2)}</p>
-    ${descuento > 0 ? `<p class="descuento-line">Descuento por ${descuentoPorMayor.desdeCantidad}+ prendas: -S/ ${descuento.toFixed(2)}</p>` : `<p style="color:#555;font-size:13px;">Lleva ${descuentoPorMayor.desdeCantidad} prendas y obtén ${descuentoPorMayor.porcentaje}% de descuento</p>`}
-    <h3>Total: S/ ${total.toFixed(2)}</h3>
+    <h3>Total: S/ ${subtotal.toFixed(2)}</h3>
   `;
 }
 
@@ -1578,23 +1519,21 @@ function eliminarItem(index){
 function pedirTodoWhatsApp(){
   if(carrito.length === 0) return;
 
-  const cantidadTotal = carrito.reduce((sum,item)=>sum + item.cantidad,0);
-  const subtotal = carrito.reduce((sum,item)=>sum + (item.precio * item.cantidad),0);
-
-  let descuento = 0;
-  if(cantidadTotal >= descuentoPorMayor.desdeCantidad){
-    descuento = subtotal * descuentoPorMayor.porcentaje / 100;
-  }
-
-  const total = subtotal - descuento;
+  let subtotal = 0;
+  let cantidadTotal = 0;
+  
+  carrito.forEach(item => {
+    cantidadTotal += item.cantidad;
+    subtotal += item.precioDescuento * item.cantidad;
+  });
 
   const detalle = carrito.map((item,index)=>`
 ${index + 1}. ${item.nombre}
    Color: ${item.color}
    Talla: ${item.talla}
    Cantidad: ${item.cantidad}
-   Precio unitario: S/ ${item.precio.toFixed(2)}
-   Subtotal: S/ ${(item.precio * item.cantidad).toFixed(2)}
+   Precio unitario: S/ ${item.precioDescuento.toFixed(2)}
+   Subtotal: S/ ${(item.precioDescuento * item.cantidad).toFixed(2)}
 `).join("");
 
   const mensaje = `Hola BAUVARE, quiero realizar este pedido:
@@ -1602,9 +1541,7 @@ ${index + 1}. ${item.nombre}
 ${detalle}
 ────────────────────
 Prendas: ${cantidadTotal}
-Subtotal: S/ ${subtotal.toFixed(2)}
-Descuento: S/ ${descuento.toFixed(2)}
-Total: S/ ${total.toFixed(2)}`;
+Total: S/ ${subtotal.toFixed(2)}`;
 
   window.open(`https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`, "_blank");
 }
