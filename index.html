@@ -53,8 +53,8 @@ body{
 }
 
 .redes a:hover{
-  background:#b97686;
-  border-color:#b97686;
+  background:#555555;
+  border-color:#555555;
 }
 
 /* ===== PRESENTACIÓN ULTRA COMPACTA ===== */
@@ -66,7 +66,7 @@ body{
   padding:8px 16px;
   background:rgba(26,26,26,.4);
   border-radius:10px;
-  border-left:3px solid #b97686;
+  border-left:3px solid #555555;
   backdrop-filter:blur(8px);
   -webkit-backdrop-filter:blur(8px);
 }
@@ -75,7 +75,7 @@ body{
   font-size:22px;
   letter-spacing:4px;
   font-weight:800;
-  background:linear-gradient(135deg,#fff 0%,#b97686 100%);
+  background:linear-gradient(135deg,#fff 0%,#555555 100%);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
   margin-bottom:0px;
@@ -85,7 +85,7 @@ body{
 .presentacion-inner .frase{
   font-size:11px;
   font-style:italic;
-  color:#b97686;
+  color:#555555;
   font-weight:500;
   letter-spacing:0.3px;
   opacity:.85;
@@ -161,7 +161,7 @@ body{
 }
 
 .producto:hover img{
-  border-color:#b97686;
+  border-color:#555555;
 }
 
 .producto h3{
@@ -174,7 +174,7 @@ body{
   margin-top:6px;
   font-weight:700;
   font-size:18px;
-  color:#b97686;
+  color:#777777;
 }
 
 .producto .precio-tarjeta .precio-original{
@@ -189,7 +189,7 @@ body{
   position:absolute;
   top:10px;
   left:10px;
-  background:#b97686;
+  background:#555555;
   padding:6px 11px;
   border-radius:18px;
   font-size:13px;
@@ -277,7 +277,7 @@ body{
 }
 
 .flecha:hover{
-  background:#b97686;
+  background:#555555;
 }
 
 .flecha.izq{left:12px}
@@ -360,12 +360,12 @@ body{
 
 .talla-circulo:hover:not(.agotado){
   transform:scale(1.05);
-  border-color:#b97686;
+  border-color:#555555;
 }
 
 .talla-circulo.activo{
-  background:#b97686;
-  border-color:#b97686;
+  background:#555555;
+  border-color:#555555;
   box-shadow:0 0 20px rgba(185,118,134,.3);
 }
 
@@ -417,7 +417,7 @@ body{
 }
 
 .cantidad button:hover{
-  background:#b97686;
+  background:#555555;
 }
 
 .cantidad strong{
@@ -456,7 +456,7 @@ body{
 
 .tabla-medidas th{
   background:#1b1b1b;
-  color:#b97686;
+  color:#555555;
 }
 
 .medidas-nota{
@@ -478,7 +478,7 @@ body{
   font-size:26px;
   font-weight:800;
   margin-bottom:6px;
-  color:#b97686;
+  color:#555555;
 }
 
 .precio .precio-descuento{
@@ -498,7 +498,7 @@ body{
 .btn-main{
   width:100%;
   padding:15px;
-  background:linear-gradient(135deg,#b97686 0%,#a06070 100%);
+  background:linear-gradient(135deg,#555555 0%,#a06070 100%);
   color:white;
   border:none;
   border-radius:12px;
@@ -536,7 +536,7 @@ body{
   width:64px;
   height:64px;
   border-radius:50%;
-  background:linear-gradient(135deg,#b97686 0%,#a06070 100%);
+  background:linear-gradient(135deg,#555555 0%,#a06070 100%);
   color:white;
   display:flex;
   align-items:center;
@@ -666,7 +666,7 @@ body{
 .resumen h3{
   font-size:22px;
   margin-top:8px;
-  color:#b97686;
+  color:#555555;
 }
 
 /* ===== TOAST ===== */
@@ -724,7 +724,7 @@ body{
     bottom:0;
     margin-top:20px;
     background:#1a1a1a;
-    border:2px solid #b97686;
+    border:2px solid #555555;
     border-radius:14px;
     padding:18px;
   }
@@ -1303,7 +1303,7 @@ function renderCarrito(){
         <p>🎨 ${item.color}</p>
         <p>📏 ${item.talla}</p>
         <p>📦 ${item.cantidad} unidad${item.cantidad > 1 ? 'es' : ''}</p>
-        <p style="color:#b97686;font-weight:600;">S/ ${(item.precio * item.cantidad).toFixed(2)}</p>
+        <p style="color:#555555;font-weight:600;">S/ ${(item.precio * item.cantidad).toFixed(2)}</p>
         <button class="eliminar" onclick="eliminarItem(${index})">🗑️ Eliminar</button>
       </div>
     </div>
