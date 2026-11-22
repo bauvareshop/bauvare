@@ -168,7 +168,7 @@ body{
   z-index:1000;
   align-items:flex-start;
   justify-content:center;
-  padding:10px;
+  padding:20px 10px;
   animation:fadeIn .3s;
   overflow-y:auto;
   -webkit-overflow-scrolling:touch;
@@ -181,14 +181,14 @@ body{
 
 .modal-content{
   background:#141414;
-  width:95%;
-  max-width:1180px;
-  margin:10px auto;
+  width:100%;
+  max-width:950px; /* Antes 1180px - Más compacto */
+  margin:auto;
   display:grid;
-  grid-template-columns:1.05fr 1fr;
-  gap:30px;
-  padding:26px;
-  border-radius:18px;
+  grid-template-columns:1fr 1fr;
+  gap:20px; /* Antes 30px */
+  padding:20px; /* Antes 26px */
+  border-radius:16px;
   position:relative;
   border:1px solid #222;
 }
@@ -196,14 +196,14 @@ body{
 /* Botón cerrar */
 .cerrar{
   position:absolute;
-  top:10px;
-  right:14px;
+  top:12px;
+  right:12px;
   background:rgba(0,0,0,.6);
   border:1px solid #333;
   color:#e8e8e8;
-  font-size:24px;
-  width:38px;
-  height:38px;
+  font-size:20px;
+  width:32px;
+  height:32px;
   border-radius:50%;
   cursor:pointer;
   z-index:10;
@@ -226,27 +226,28 @@ body{
   display:flex;
   align-items:center;
   justify-content:center;
+  background:#1a1a1a;
+  border-radius:12px;
+  overflow:hidden;
 }
 
 .foto-modal img{
   width:100%;
-  max-height:75vh;
+  max-height:55vh; /* Antes 75vh - Para que no sea tan alta */
   object-fit:cover;
-  border-radius:12px;
-  background:#1a1a1a;
 }
 
 .flecha{
   position:absolute;
   top:50%;
   transform:translateY(-50%);
-  width:42px;
-  height:42px;
+  width:36px;
+  height:36px;
   border-radius:50%;
   background:rgba(0,0,0,.55);
   border:1px solid #444;
   color:#e8e8e8;
-  font-size:26px;
+  font-size:22px;
   cursor:pointer;
   display:flex;
   align-items:center;
@@ -270,35 +271,36 @@ body{
 .info{
   overflow-y:visible;
   padding-right:4px;
-  padding-bottom:20px;
+  padding-bottom:10px;
 }
 
 .info h2{
-  font-size:30px;
-  margin-bottom:8px;
+  font-size:22px; /* Antes 30px - Letra más pequeña */
+  margin-bottom:4px;
   font-weight:700;
   color:#e8e8e8;
 }
 
 .bloque{
-  margin-top:20px;
+  margin-top:14px; /* Antes 20px */
 }
 
 .bloque h4{
-  margin-bottom:10px;
+  margin-bottom:8px;
   font-weight:600;
+  font-size:13px; /* Letra de títulos más pequeña */
   color:#aaa;
 }
 
 .colores,.tallas{
   display:flex;
-  gap:10px;
+  gap:8px;
   flex-wrap:wrap;
 }
 
 .color-circulo{
-  width:36px;
-  height:36px;
+  width:30px; /* Antes 36px */
+  height:30px;
   border-radius:50%;
   border:2px solid #444;
   cursor:pointer;
@@ -311,24 +313,24 @@ body{
 }
 
 .color-circulo.activo{
-  outline:3px solid #d4af37;
+  outline:2px solid #d4af37;
   outline-offset:2px;
 }
 
 .color-circulo.agotado::after{
   content:"";
   position:absolute;
-  width:48px;
+  width:40px;
   height:2px;
   background:#ff5252;
   transform:rotate(-45deg);
-  top:16px;
-  left:-7px;
+  top:13px;
+  left:-6px;
 }
 
 .talla-circulo{
-  width:45px;
-  height:45px;
+  width:36px; /* Antes 45px */
+  height:36px;
   border-radius:50%;
   border:2px solid #444;
   display:flex;
@@ -339,6 +341,7 @@ body{
   position:relative;
   transition:all .3s;
   font-weight:600;
+  font-size:13px;
   color:#e8e8e8;
 }
 
@@ -351,7 +354,7 @@ body{
   background:#d4af37;
   border-color:#d4af37;
   color:#0a0a0a;
-  box-shadow:0 0 20px rgba(212,175,55,.2);
+  box-shadow:0 0 15px rgba(212,175,55,.2);
 }
 
 .talla-circulo.agotado{
@@ -362,21 +365,22 @@ body{
 .talla-circulo.agotado::after{
   content:"";
   position:absolute;
-  width:48px;
+  width:40px;
   height:2px;
   background:#ff5252;
   transform:rotate(-35deg);
 }
 
 .stock-disponible{
-  font-size:13px;
+  font-size:12px; /* Antes 13px */
   color:#aaa;
   margin-top:4px;
 }
 
 .estado{
-  margin-top:14px;
+  margin-top:10px;
   font-weight:bold;
+  font-size:13px;
 }
 
 .disponible{color:#4caf50}
@@ -385,16 +389,16 @@ body{
 .cantidad{
   display:flex;
   align-items:center;
-  gap:15px;
-  margin-top:10px;
+  gap:12px;
+  margin-top:6px;
 }
 
 .cantidad button{
-  width:36px;
-  height:36px;
+  width:30px; /* Antes 36px */
+  height:30px;
   border:1px solid #333;
   border-radius:50%;
-  font-size:20px;
+  font-size:16px;
   cursor:pointer;
   background:#1a1a1a;
   color:#e8e8e8;
@@ -408,73 +412,78 @@ body{
 }
 
 .cantidad strong{
-  font-size:20px;
-  min-width:30px;
+  font-size:16px; /* Antes 20px */
+  min-width:20px;
   text-align:center;
   color:#e8e8e8;
 }
 
 .detalles{
-  margin-top:22px;
+  margin-top:16px;
   color:#aaa;
-  line-height:1.6;
+  line-height:1.5;
+  font-size:13px; /* Letra más pequeña para los detalles */
 }
 
 .detalles h4{
   color:#ccc;
-  margin-top:18px;
+  margin-top:14px;
+  margin-bottom:4px;
+  font-size:13px;
 }
 
 .detalles ul{
-  padding-left:18px;
+  padding-left:16px;
 }
 
 /* ===== TABLA DE MEDIDAS ===== */
 .tabla-medidas-imagen{
-  margin-top:14px;
+  margin-top:8px;
   width:100%;
 }
 
 .tabla-medidas-imagen img{
   width:100%;
-  border-radius:10px;
+  max-height:120px; /* Ajuste para que no ocupe tanta altura */
+  object-fit:cover;
+  border-radius:8px;
   border:1px solid #222;
 }
 
 .medidas-nota{
-  font-size:12px;
+  font-size:11px;
   color:#555;
-  margin-top:8px;
+  margin-top:4px;
 }
 
 /* ===== BARRA DE COMPRA ===== */
 .barra-compra{
   background:#0a0a0a;
   border:1px solid #222;
-  padding:18px;
-  border-radius:14px;
-  margin-top:25px;
+  padding:14px; /* Antes 18px */
+  border-radius:12px;
+  margin-top:18px; /* Antes 25px */
 }
 
 .precio{
-  font-size:26px;
+  font-size:22px; /* Antes 26px */
   font-weight:800;
-  margin-bottom:6px;
+  margin-bottom:4px;
   color:#d4af37;
 }
 
 .precio .precio-descuento{
   color:#555;
-  font-size:18px;
+  font-size:16px;
   text-decoration:line-through;
-  margin-left:12px;
+  margin-left:8px;
   font-weight:400;
 }
 
 .precio-unitario{
   color:#666;
-  font-size:13px;
-  margin-bottom:12px;
+  font-size:12px;
+  margin-bottom:10px;
 }
 
 .precio-unitario .precio-mayor{
@@ -484,24 +493,24 @@ body{
 
 .btn-main{
   width:100%;
-  padding:15px;
+  padding:12px; /* Antes 15px */
   background:#d4af37;
   color:#0a0a0a;
   border:none;
-  border-radius:12px;
-  font-size:16px;
+  border-radius:10px;
+  font-size:14px; /* Letra del botón un poco más chica */
   font-weight:700;
   cursor:pointer;
   transition:all .3s;
   display:flex;
   align-items:center;
   justify-content:center;
-  gap:10px;
+  gap:8px;
 }
 
 .btn-main:hover:not(:disabled){
   transform:translateY(-2px);
-  box-shadow:0 8px 25px rgba(212,175,55,.3);
+  box-shadow:0 8px 20px rgba(212,175,55,.3);
   background:#c9a84c;
 }
 
@@ -570,11 +579,11 @@ body{
 }
 
 .carrito-box{
-  width:420px;
+  width:380px; /* Un poco más compacto */
   max-width:100%;
   height:100%;
   background:#0a0a0a;
-  padding:24px;
+  padding:20px;
   overflow-y:auto;
   position:relative;
   border-left:1px solid #222;
@@ -587,42 +596,43 @@ body{
 }
 
 .carrito-box h2{
-  margin-bottom:20px;
+  margin-bottom:18px;
   font-weight:700;
+  font-size:22px;
   color:#e8e8e8;
 }
 
 .item-carrito{
   display:grid;
-  grid-template-columns:80px 1fr;
+  grid-template-columns:70px 1fr;
   gap:12px;
   border-bottom:1px solid #222;
-  padding:14px 0;
+  padding:12px 0;
 }
 
 .item-carrito img{
-  width:80px;
-  height:105px;
+  width:70px;
+  height:90px;
   object-fit:cover;
   background:#1a1a1a;
-  border-radius:10px;
-  padding:5px;
+  border-radius:8px;
+  padding:4px;
 }
 
 .item-carrito .item-info{
   display:flex;
   flex-direction:column;
-  gap:4px;
+  gap:2px;
 }
 
 .item-carrito .item-info strong{
-  font-size:15px;
+  font-size:14px;
   color:#e8e8e8;
 }
 
 .item-carrito .item-info p{
   color:#888;
-  font-size:13px;
+  font-size:12px;
   margin:0;
 }
 
@@ -631,11 +641,12 @@ body{
   background:#1a1a1a;
   color:#e8e8e8;
   border:1px solid #333;
-  padding:6px 12px;
-  border-radius:8px;
+  padding:4px 10px;
+  border-radius:6px;
   cursor:pointer;
-  font-size:12px;
+  font-size:11px;
   transition:all .3s;
+  width:max-content;
 }
 
 .eliminar:hover{
@@ -645,23 +656,19 @@ body{
 }
 
 .resumen{
-  margin-top:20px;
+  margin-top:18px;
   border-top:1px solid #222;
-  padding-top:15px;
+  padding-top:14px;
 }
 
 .resumen p{
   margin:4px 0;
-  font-size:14px;
+  font-size:13px;
   color:#aaa;
 }
 
-.resumen .descuento-line{
-  color:#d4af37;
-}
-
 .resumen h3{
-  font-size:22px;
+  font-size:20px;
   margin-top:8px;
   color:#d4af37;
 }
@@ -674,8 +681,9 @@ body{
   transform:translateX(-50%) translateY(30px);
   background:#4caf50;
   color:#fff;
-  padding:15px 25px;
+  padding:12px 20px;
   border-radius:30px;
+  font-size:14px;
   font-weight:600;
   opacity:0;
   pointer-events:none;
@@ -701,7 +709,7 @@ body{
 
   .modal-content{
     grid-template-columns:1fr;
-    padding:18px;
+    padding:16px;
     gap:16px;
     margin:5px auto;
     width:100%;
@@ -709,21 +717,17 @@ body{
   }
 
   .foto-modal img{
-    max-height:50vh;
-  }
-
-  .info{
-    padding-bottom:10px;
+    max-height:40vh;
   }
 
   .barra-compra{
     position:sticky;
     bottom:0;
-    margin-top:20px;
+    margin-top:16px;
     background:#0a0a0a;
-    border:2px solid #d4af37;
-    border-radius:14px;
-    padding:18px;
+    border:1px solid #d4af37;
+    border-radius:12px;
+    padding:12px;
     z-index:5;
   }
 
@@ -800,15 +804,15 @@ body{
   }
 
   .info h2{
-    font-size:24px;
+    font-size:20px;
   }
 
   .barra-compra{
     position:sticky;
     bottom:0;
-    margin-top:20px;
-    border-radius:12px;
-    padding:14px;
+    margin-top:16px;
+    border-radius:10px;
+    padding:12px;
   }
 
   .carrito-flotante{
@@ -826,14 +830,14 @@ body{
 
   .toast{
     bottom:150px;
-    font-size:14px;
-    padding:12px 18px;
+    font-size:13px;
+    padding:10px 16px;
   }
 
   .flecha{
-    width:32px;
-    height:32px;
-    font-size:20px;
+    width:30px;
+    height:30px;
+    font-size:18px;
   }
 
   .flecha.izq{left:6px}
@@ -1253,7 +1257,6 @@ function abrirModal(index){
   fotoActual = 0;
   cantidadActual = 1;
 
-  // Seleccionar la primera talla con stock disponible en el primer color
   const colorInicial = productoActual.colores[0];
   const tallaConStock = productoActual.tallas.find(t => colorInicial.stock[t] && colorInicial.stock[t] > 0);
   tallaActual = tallaConStock || productoActual.tallas[0];
@@ -1432,7 +1435,6 @@ function agregarAlCarrito(){
   const color = productoActual.colores[colorActual];
   const precioConDescuento = calcularPrecioConDescuento(cantidadActual, productoActual.precio);
 
-  // Verificar si ya existe el mismo producto, color y talla
   const itemExistente = carrito.find(item => 
     item.nombre === productoActual.nombre && 
     item.color === color.nombre && 
@@ -1476,7 +1478,6 @@ function mostrarToast(mensaje){
 function actualizarCarrito(){
   const totalItems = carrito.reduce((sum,item)=>sum + item.cantidad,0);
   document.getElementById("contadorCarrito").textContent = totalItems;
-  // Guardar en localStorage
   localStorage.setItem("bauvare_carrito", JSON.stringify(carrito));
 }
 
