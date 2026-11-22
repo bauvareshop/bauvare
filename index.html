@@ -118,9 +118,9 @@ body{
 /* FOTO EN CATÁLOGO CUADRADA */
 .producto img{
   width:100%;
-  aspect-ratio:1/1; /* Fuerza a que sea un cuadrado */
-  object-fit:contain; /* Hace que la imagen quepa entera sin recortarse */
-  background:#0a0a0a; /* Borde negro si la foto es vertical */
+  aspect-ratio:1/1; 
+  object-fit:contain; 
+  background:#0a0a0a; 
   border-radius:8px;
   transition:.3s;
 }
@@ -160,7 +160,7 @@ body{
   z-index:2;
 }
 
-/* ===== MODAL REDISEÑADO ===== */
+/* ===== MODAL ===== */
 .modal{
   display:none;
   position:fixed;
@@ -199,7 +199,6 @@ body{
 .modal-content::-webkit-scrollbar { width: 6px; }
 .modal-content::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
 
-/* Botón cerrar */
 .cerrar{
   position:absolute;
   top:12px;
@@ -226,7 +225,7 @@ body{
   color:#fff;
 }
 
-/* ===== COLUMNA IZQUIERDA (Foto y Selectores) ===== */
+/* ===== COLUMNA IZQUIERDA ===== */
 .columna-izquierda{
   display:flex;
   flex-direction:column;
@@ -238,19 +237,19 @@ body{
   display:flex;
   align-items:center;
   justify-content:center;
-  background:#0a0a0a; /* Fondo negro para el cuadro */
+  background:#0a0a0a; 
   border-radius:12px;
   overflow:hidden;
   width: 100%;
-  aspect-ratio: 1/1; /* Hace que el contenedor de la foto sea cuadrado */
-  max-height: 45vh; /* Limita el alto para que el modal no sea enorme */
+  aspect-ratio: 1/1; 
+  max-height: 45vh; 
   margin: 0 auto;
 }
 
 .foto-modal img{
   width:100%;
   height:100%;
-  object-fit:contain; /* Mantiene la foto entera sin recortar y deja bordes si es necesario */
+  object-fit:contain; 
 }
 
 .flecha{
@@ -283,7 +282,6 @@ body{
 .flecha.izq{left:8px}
 .flecha.der{right:8px}
 
-/* Selectores debajo de la foto */
 .selectores-bajo-foto{
   background:#0a0a0a;
   padding:14px;
@@ -379,7 +377,7 @@ body{
 .disponible{color:#4caf50}
 .agotado-texto{color:#ff5252}
 
-/* ===== COLUMNA DERECHA (Título, Precio, Detalles, Compra) ===== */
+/* ===== COLUMNA DERECHA ===== */
 .columna-derecha{
   display:flex;
   flex-direction:column;
@@ -450,12 +448,12 @@ body{
 }
 
 .tabla-medidas-imagen img{
-  width:80px; /* Tamaño pequeño de miniatura */
+  width:80px; 
   height:80px;
   object-fit:cover;
   border-radius:6px;
   border:1px solid #333;
-  cursor:zoom-in; /* Cursor para indicar que se puede agrandar */
+  cursor:zoom-in; 
   transition:transform 0.2s, border-color 0.2s;
 }
 
@@ -471,7 +469,7 @@ body{
   margin-bottom: 4px;
 }
 
-/* ===== VISOR DE IMAGEN (Lightbox para tabla de medidas) ===== */
+/* ===== VISOR DE IMAGEN (Lightbox) ===== */
 .lightbox{
   display:none;
   position:fixed;
@@ -740,7 +738,6 @@ body{
   <div class="modal-content">
     <button class="cerrar" onclick="cerrarModal()" aria-label="Cerrar">×</button>
 
-    <!-- COLUMNA IZQUIERDA: Foto y selectores -->
     <div class="columna-izquierda">
       <div class="foto-modal">
         <button class="flecha izq" onclick="cambiarFoto(-1)" aria-label="Foto anterior">‹</button>
@@ -763,11 +760,9 @@ body{
       </div>
     </div>
 
-    <!-- COLUMNA DERECHA: Info y Detalles -->
     <div class="columna-derecha">
       <h2 id="nombreProducto"></h2>
       
-      <!-- PRECIO AQUÍ -->
       <p class="precio" id="precioProducto"></p>
       <p class="precio-unitario" id="precioUnitario"></p>
 
@@ -781,7 +776,6 @@ body{
         <h4>Tabla de medidas</h4>
         <p class="medidas-nota">📏 Haz clic en la imagen para agrandar</p>
         <div class="tabla-medidas-imagen">
-          <!-- Se agrega el onclick para abrir el visor -->
           <img src="https://via.placeholder.com/800x400/222/d4af37?text=Tabla+de+Medidas" alt="Tabla de medidas BAUVARE" onclick="abrirLightbox(this.src)">
         </div>
       </div>
@@ -843,231 +837,235 @@ const numeroWhatsApp = "51926677046";
 
 const productos = [
   {
-    nombre:"Pantalón Cordoroy",
-    precio:40.00,
-    descuento:0,
-    colores:[
+    nombre: "Pantalón Cordoroy",
+    precio: 40.00,
+    descuento: 0,
+    colores: [
       {
-        nombre:"Negro",
-        codigo:"#1a1a1a",
-        disponible:true,
-        imagenes:[
+        nombre: "Negro",
+        codigo: "#1a1a1a",
+        disponible: true,
+        imagenes: [
           "https://i.postimg.cc/XJWLqpWq/CORDO4.jpg",
           "https://i.postimg.cc/gJ4JhBCx/CORDO1.jpg",
           "https://i.postimg.cc/Gt2pxxRQ/CORDO3.jpg"
         ],
-        stock:{S:5,M:5,L:5}
+        stock: {S: 5, M: 5, L: 5}
       }
-   }
+    ],
+    tallas: ["S", "M", "L"],
+    detalles: ["Tela resistente y cómoda", "Fit urbano formal", "Bolsillos laterales funcionales"],
+    recomendaciones: ["Lavar con agua fría", "No usar lejía", "Planchar a temperatura baja"]
+  },
   {
-    nombre:"Polo Oversize Blanco",
-    precio:29.90,
-    descuento:0,
-    colores:[
+    nombre: "Polo Oversize Blanco",
+    precio: 29.90,
+    descuento: 0,
+    colores: [
       {
-        nombre:"Blanco",
-        codigo:"#f0f0f0",
-        disponible:true,
-        imagenes:[
+        nombre: "Blanco",
+        codigo: "#f0f0f0",
+        disponible: true,
+        imagenes: [
           "https://images.unsplash.com/photo-1523398002811-999ca8dec234?w=900",
           "https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?w=900"
         ],
-        stock:{S:5,M:5,L:5}
+        stock: {S: 5, M: 5, L: 5}
       },
       {
-        nombre:"Negro",
-        codigo:"#1a1a1a",
-        disponible:true,
-        imagenes:[
+        nombre: "Negro",
+        codigo: "#1a1a1a",
+        disponible: true,
+        imagenes: [
           "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=900",
           "https://images.unsplash.com/photo-1516762689617-e1cffcef479d?w=900"
         ],
-        stock:{S:3,M:3,L:3}
+        stock: {S: 3, M: 3, L: 3}
       }
     ],
-    tallas:["S","M","L"],
-    detalles:["Corte oversize","Algodón suave","Ideal para outfit urbano"],
-    recomendaciones:["Lavar al revés","Secar bajo sombra","No exprimir"]
+    tallas: ["S", "M", "L"],
+    detalles: ["Corte oversize", "Algodón suave", "Ideal para outfit urbano"],
+    recomendaciones: ["Lavar al revés", "Secar bajo sombra", "No exprimir"]
   },
   {
-    nombre:"Chaqueta Denim",
-    precio:49.90,
-    descuento:0,
-    colores:[
+    nombre: "Chaqueta Denim",
+    precio: 49.90,
+    descuento: 0,
+    colores: [
       {
-        nombre:"Azul Oscuro",
-        codigo:"#1a2a4a",
-        disponible:true,
-        imagenes:[
+        nombre: "Azul Oscuro",
+        codigo: "#1a2a4a",
+        disponible: true,
+        imagenes: [
           "https://images.unsplash.com/photo-1539533018447-63fcce2678e3?w=900",
           "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=900"
         ],
-        stock:{S:3,M:4,L:4,XL:3}
+        stock: {S: 3, M: 4, L: 4, XL: 3}
       },
       {
-        nombre:"Negro",
-        codigo:"#1a1a1a",
-        disponible:true,
-        imagenes:[
+        nombre: "Negro",
+        codigo: "#1a1a1a",
+        disponible: true,
+        imagenes: [
           "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=900",
           "https://images.unsplash.com/photo-1539533018447-63fcce2678e3?w=900"
         ],
-        stock:{S:2,M:3,L:3,XL:2}
+        stock: {S: 2, M: 3, L: 3, XL: 2}
       }
     ],
-    tallas:["S","M","L","XL"],
-    detalles:["Denim de alta calidad","Corte clásico","Cierre metálico"],
-    recomendaciones:["Lavar en frío","No usar secadora","Planchar al revés"]
+    tallas: ["S", "M", "L", "XL"],
+    detalles: ["Denim de alta calidad", "Corte clásico", "Cierre metálico"],
+    recomendaciones: ["Lavar en frío", "No usar secadora", "Planchar al revés"]
   },
   {
-    nombre:"Jogger Deportivo",
-    precio:39.90,
-    descuento:0,
-    colores:[
+    nombre: "Jogger Deportivo",
+    precio: 39.90,
+    descuento: 0,
+    colores: [
       {
-        nombre:"Gris",
-        codigo:"#888888",
-        disponible:true,
-        imagenes:[
+        nombre: "Gris",
+        codigo: "#888888",
+        disponible: true,
+        imagenes: [
           "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?w=900",
           "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=900"
         ],
-        stock:{S:5,M:5,L:5,XL:4}
+        stock: {S: 5, M: 5, L: 5, XL: 4}
       },
       {
-        nombre:"Negro",
-        codigo:"#1a1a1a",
-        disponible:true,
-        imagenes:[
+        nombre: "Negro",
+        codigo: "#1a1a1a",
+        disponible: true,
+        imagenes: [
           "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=900",
           "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?w=900"
         ],
-        stock:{S:3,M:3,L:3,XL:2}
+        stock: {S: 3, M: 3, L: 3, XL: 2}
       }
     ],
-    tallas:["S","M","L","XL"],
-    detalles:["Tejido elástico","Ajuste perfecto","Bolsillos con cierre"],
-    recomendaciones:["Lavar a 30°","No usar suavizante","Secar al aire"]
+    tallas: ["S", "M", "L", "XL"],
+    detalles: ["Tejido elástico", "Ajuste perfecto", "Bolsillos con cierre"],
+    recomendaciones: ["Lavar a 30°", "No usar suavizante", "Secar al aire"]
   },
   {
-    nombre:"Camisa Formal",
-    precio:45.00,
-    descuento:0,
-    colores:[
+    nombre: "Camisa Formal",
+    precio: 45.00,
+    descuento: 0,
+    colores: [
       {
-        nombre:"Blanco",
-        codigo:"#f0f0f0",
-        disponible:true,
-        imagenes:[
+        nombre: "Blanco",
+        codigo: "#f0f0f0",
+        disponible: true,
+        imagenes: [
           "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=900",
           "https://images.unsplash.com/photo-1523398002811-999ca8dec234?w=900"
         ],
-        stock:{S:3,M:4,L:4,XL:3}
+        stock: {S: 3, M: 4, L: 4, XL: 3}
       },
       {
-        nombre:"Negro",
-        codigo:"#1a1a1a",
-        disponible:true,
-        imagenes:[
+        nombre: "Negro",
+        codigo: "#1a1a1a",
+        disponible: true,
+        imagenes: [
           "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=900",
           "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=900"
         ],
-        stock:{S:2,M:3,L:3,XL:2}
+        stock: {S: 2, M: 3, L: 3, XL: 2}
       }
     ],
-    tallas:["S","M","L","XL"],
-    detalles:["Tela premium","Corte slim fit","Puños ajustables"],
-    recomendaciones:["Lavar en seco","Planchar con vapor","Colgar en perchas"]
+    tallas: ["S", "M", "L", "XL"],
+    detalles: ["Tela premium", "Corte slim fit", "Puños ajustables"],
+    recomendaciones: ["Lavar en seco", "Planchar con vapor", "Colgar en perchas"]
   },
   {
-    nombre:"Short Urbano",
-    precio:25.00,
-    descuento:0,
-    colores:[
+    nombre: "Short Urbano",
+    precio: 25.00,
+    descuento: 0,
+    colores: [
       {
-        nombre:"Negro",
-        codigo:"#1a1a1a",
-        disponible:true,
-        imagenes:[
+        nombre: "Negro",
+        codigo: "#1a1a1a",
+        disponible: true,
+        imagenes: [
           "https://images.unsplash.com/photo-1591195853828-11db59d44e6a?w=900",
           "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=900"
         ],
-        stock:{S:5,M:5,L:5,XL:4}
+        stock: {S: 5, M: 5, L: 5, XL: 4}
       },
       {
-        nombre:"Beige",
-        codigo:"#d4c5a0",
-        disponible:true,
-        imagenes:[
+        nombre: "Beige",
+        codigo: "#d4c5a0",
+        disponible: true,
+        imagenes: [
           "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=900",
           "https://images.unsplash.com/photo-1591195853828-11db59d44e6a?w=900"
         ],
-        stock:{S:3,M:3,L:3,XL:2}
+        stock: {S: 3, M: 3, L: 3, XL: 2}
       }
     ],
-    tallas:["S","M","L","XL"],
-    detalles:["Tela fresca","Estilo casual","Elástico en la cintura"],
-    recomendaciones:["Lavar con agua fría","No planchar","Secar a la sombra"]
+    tallas: ["S", "M", "L", "XL"],
+    detalles: ["Tela fresca", "Estilo casual", "Elástico en la cintura"],
+    recomendaciones: ["Lavar con agua fría", "No planchar", "Secar a la sombra"]
   },
   {
-    nombre:"Sudadera Hoodie",
-    precio:55.00,
-    descuento:0,
-    colores:[
+    nombre: "Sudadera Hoodie",
+    precio: 55.00,
+    descuento: 0,
+    colores: [
       {
-        nombre:"Negro",
-        codigo:"#1a1a1a",
-        disponible:true,
-        imagenes:[
+        nombre: "Negro",
+        codigo: "#1a1a1a",
+        disponible: true,
+        imagenes: [
           "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=900",
           "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=900"
         ],
-        stock:{S:4,M:4,L:4,XL:3}
+        stock: {S: 4, M: 4, L: 4, XL: 3}
       },
       {
-        nombre:"Gris",
-        codigo:"#888888",
-        disponible:true,
-        imagenes:[
+        nombre: "Gris",
+        codigo: "#888888",
+        disponible: true,
+        imagenes: [
           "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=900",
           "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=900"
         ],
-        stock:{S:2,M:3,L:3,XL:2}
+        stock: {S: 2, M: 3, L: 3, XL: 2}
       }
     ],
-    tallas:["S","M","L","XL"],
-    detalles:["Felpa suave","Capucha ajustable","Bolsillo canguro"],
-    recomendaciones:["Lavar al revés","No usar secadora","Planchar al revés"]
+    tallas: ["S", "M", "L", "XL"],
+    detalles: ["Felpa suave", "Capucha ajustable", "Bolsillo canguro"],
+    recomendaciones: ["Lavar al revés", "No usar secadora", "Planchar al revés"]
   },
   {
-    nombre:"Blazer Elegante",
-    precio:65.00,
-    descuento:0,
-    colores:[
+    nombre: "Blazer Elegante",
+    precio: 65.00,
+    descuento: 0,
+    colores: [
       {
-        nombre:"Negro",
-        codigo:"#1a1a1a",
-        disponible:true,
-        imagenes:[
+        nombre: "Negro",
+        codigo: "#1a1a1a",
+        disponible: true,
+        imagenes: [
           "https://images.unsplash.com/photo-1583744946564-b52ac1c389c8?w=900",
           "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=900"
         ],
-        stock:{S:3,M:4,L:4,XL:3}
+        stock: {S: 3, M: 4, L: 4, XL: 3}
       },
       {
-        nombre:"Gris",
-        codigo:"#888888",
-        disponible:true,
-        imagenes:[
+        nombre: "Gris",
+        codigo: "#888888",
+        disponible: true,
+        imagenes: [
           "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=900",
           "https://images.unsplash.com/photo-1583744946564-b52ac1c389c8?w=900"
         ],
-        stock:{S:2,M:3,L:3,XL:2}
+        stock: {S: 2, M: 3, L: 3, XL: 2}
       }
     ],
-    tallas:["S","M","L","XL"],
-    detalles:["Tela de lana","Corte estructurado","Bolsillos laterales"],
-    recomendaciones:["Lavar en seco","Colgar en perchas","No planchar directamente"]
+    tallas: ["S", "M", "L", "XL"],
+    detalles: ["Tela de lana", "Corte estructurado", "Bolsillos laterales"],
+    recomendaciones: ["Lavar en seco", "Colgar en perchas", "No planchar directamente"]
   }
 ];
 
@@ -1287,7 +1285,6 @@ function abrirLightbox(src){
 }
 
 function cerrarLightbox(e){
-  // Si el click fue en el fondo o en el botón de cerrar, se cierra.
   if(!e || e.target.id === 'lightbox' || e.target.classList.contains('cerrar')){
     document.getElementById("lightbox").style.display = "none";
   }
