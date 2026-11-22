@@ -115,11 +115,12 @@ body{
   border-color:#d4af37;
 }
 
+/* FOTO EN CATÁLOGO CUADRADA */
 .producto img{
   width:100%;
-  aspect-ratio:3/4;
-  object-fit:cover;
-  background:#1a1a1a;
+  aspect-ratio:1/1; /* Fuerza a que sea un cuadrado */
+  object-fit:contain; /* Hace que la imagen quepa entera sin recortarse */
+  background:#0a0a0a; /* Borde negro si la foto es vertical */
   border-radius:8px;
   transition:.3s;
 }
@@ -166,7 +167,7 @@ body{
   inset:0;
   background:rgba(0,0,0,.95);
   z-index:1000;
-  align-items:center; /* Centrado verticalmente */
+  align-items:center;
   justify-content:center;
   padding:15px;
   animation:fadeIn .3s;
@@ -182,27 +183,21 @@ body{
 .modal-content{
   background:#141414;
   width:100%;
-  max-width:850px; /* Más pequeño y compacto */
+  max-width:850px;
   margin:auto;
   display:grid;
-  grid-template-columns:1.1fr 1fr; /* Izquierda un poco más ancha para foto y selectores */
+  grid-template-columns:1.1fr 1fr;
   gap:24px;
   padding:20px;
   border-radius:16px;
   position:relative;
   border:1px solid #222;
-  max-height:95vh; /* Para que no se salga de la pantalla */
-  overflow-y:auto; /* Por si acaso */
+  max-height:95vh;
+  overflow-y:auto;
 }
 
-/* Ocultar scrollbar en el modal para que se vea más limpio */
-.modal-content::-webkit-scrollbar {
-  width: 6px;
-}
-.modal-content::-webkit-scrollbar-thumb {
-  background: #333;
-  border-radius: 4px;
-}
+.modal-content::-webkit-scrollbar { width: 6px; }
+.modal-content::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
 
 /* Botón cerrar */
 .cerrar{
@@ -243,15 +238,19 @@ body{
   display:flex;
   align-items:center;
   justify-content:center;
-  background:#1a1a1a;
+  background:#0a0a0a; /* Fondo negro para el cuadro */
   border-radius:12px;
   overflow:hidden;
+  width: 100%;
+  aspect-ratio: 1/1; /* Hace que el contenedor de la foto sea cuadrado */
+  max-height: 45vh; /* Limita el alto para que el modal no sea enorme */
+  margin: 0 auto;
 }
 
 .foto-modal img{
   width:100%;
-  max-height:40vh; /* Foto más controlada */
-  object-fit:cover;
+  height:100%;
+  object-fit:contain; /* Mantiene la foto entera sin recortar y deja bordes si es necesario */
 }
 
 .flecha{
@@ -426,7 +425,7 @@ body{
   color:#aaa;
   line-height:1.5;
   font-size:13px;
-  flex-grow: 1; /* Empuja la barra de compra hacia abajo */
+  flex-grow: 1;
 }
 
 .detalles h4{
@@ -444,22 +443,58 @@ body{
   padding-left:16px;
 }
 
-/* Tabla de medidas */
+/* --- TABLA DE MEDIDAS MINIATURA --- */
 .tabla-medidas-imagen{
   margin-top:6px;
   width:100%;
 }
+
 .tabla-medidas-imagen img{
-  width:100%;
-  max-height:80px;
+  width:80px; /* Tamaño pequeño de miniatura */
+  height:80px;
   object-fit:cover;
   border-radius:6px;
-  border:1px solid #222;
+  border:1px solid #333;
+  cursor:zoom-in; /* Cursor para indicar que se puede agrandar */
+  transition:transform 0.2s, border-color 0.2s;
 }
+
+.tabla-medidas-imagen img:hover{
+  transform:scale(1.05);
+  border-color:#d4af37;
+}
+
 .medidas-nota{
   font-size:11px;
   color:#555;
   margin-top:2px;
+  margin-bottom: 4px;
+}
+
+/* ===== VISOR DE IMAGEN (Lightbox para tabla de medidas) ===== */
+.lightbox{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.9);
+  z-index:5000;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  animation:fadeIn .3s;
+}
+.lightbox img{
+  max-width:100%;
+  max-height:90vh;
+  object-fit:contain;
+  border-radius:8px;
+}
+.lightbox .cerrar{
+  top:20px;
+  right:20px;
+  width:40px;
+  height:40px;
+  font-size:26px;
 }
 
 /* Barra de compra */
@@ -631,13 +666,13 @@ body{
 /* ===== RESPONSIVE ===== */
 @media(max-width:850px){
   .modal-content{
-    grid-template-columns:1fr; /* Una sola columna en móviles */
+    grid-template-columns:1fr;
     gap:16px;
     padding:16px;
     max-height:95vh;
   }
-  .foto-modal img{
-    max-height:35vh;
+  .foto-modal{
+    max-height: 40vh;
   }
   .columna-izquierda {
     gap: 12px;
@@ -744,9 +779,10 @@ body{
         <ul id="recomendacionesProducto"></ul>
 
         <h4>Tabla de medidas</h4>
-        <p class="medidas-nota">📏 Guía de tallas</p>
+        <p class="medidas-nota">📏 Haz clic en la imagen para agrandar</p>
         <div class="tabla-medidas-imagen">
-          <img src="https://via.placeholder.com/800x400/222/d4af37?text=Tabla+de+Medidas" alt="Tabla de medidas BAUVARE">
+          <!-- Se agrega el onclick para abrir el visor -->
+          <img src="https://via.placeholder.com/800x400/222/d4af37?text=Tabla+de+Medidas" alt="Tabla de medidas BAUVARE" onclick="abrirLightbox(this.src)">
         </div>
       </div>
 
@@ -762,6 +798,12 @@ body{
       </div>
     </div>
   </div>
+</div>
+
+<!-- ===== VISOR DE IMAGEN (Lightbox) ===== -->
+<div class="lightbox" id="lightbox" onclick="cerrarLightbox()">
+  <button class="cerrar" onclick="cerrarLightbox()" aria-label="Cerrar">×</button>
+  <img id="lightboxImg" src="" alt="Vista ampliada">
 </div>
 
 <!-- ===== CARRITO FLOTANTE ===== -->
@@ -1251,6 +1293,19 @@ function cargarDetalles(){
     productoActual.recomendaciones.map(r=>`<li>${r}</li>`).join("");
 }
 
+/* ===== LIGHTBOX (TABLA DE MEDIDAS) ===== */
+function abrirLightbox(src){
+  document.getElementById("lightboxImg").src = src;
+  document.getElementById("lightbox").style.display = "flex";
+}
+
+function cerrarLightbox(e){
+  // Si el click fue en el fondo o en el botón de cerrar, se cierra.
+  if(!e || e.target.id === 'lightbox' || e.target.classList.contains('cerrar')){
+    document.getElementById("lightbox").style.display = "none";
+  }
+}
+
 /* ===== CARRITO ===== */
 function agregarAlCarrito(){
   const color = productoActual.colores[colorActual];
@@ -1420,6 +1475,7 @@ document.addEventListener("keydown", function(e){
   if(e.key === "Escape"){
     if(document.getElementById("modal").style.display === "flex") cerrarModal();
     if(document.getElementById("carritoPanel").style.display === "flex") cerrarCarrito();
+    if(document.getElementById("lightbox").style.display === "flex") document.getElementById("lightbox").style.display = "none";
   }
 });
 
