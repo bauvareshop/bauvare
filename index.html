@@ -159,16 +159,16 @@ body{
   z-index:2;
 }
 
-/* ===== MODAL ===== */
+/* ===== MODAL REDISEÑADO ===== */
 .modal{
   display:none;
   position:fixed;
   inset:0;
   background:rgba(0,0,0,.95);
   z-index:1000;
-  align-items:flex-start;
+  align-items:center; /* Centrado verticalmente */
   justify-content:center;
-  padding:20px 10px;
+  padding:15px;
   animation:fadeIn .3s;
   overflow-y:auto;
   -webkit-overflow-scrolling:touch;
@@ -182,15 +182,26 @@ body{
 .modal-content{
   background:#141414;
   width:100%;
-  max-width:950px; /* Antes 1180px - Más compacto */
+  max-width:850px; /* Más pequeño y compacto */
   margin:auto;
   display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:20px; /* Antes 30px */
-  padding:20px; /* Antes 26px */
+  grid-template-columns:1.1fr 1fr; /* Izquierda un poco más ancha para foto y selectores */
+  gap:24px;
+  padding:20px;
   border-radius:16px;
   position:relative;
   border:1px solid #222;
+  max-height:95vh; /* Para que no se salga de la pantalla */
+  overflow-y:auto; /* Por si acaso */
+}
+
+/* Ocultar scrollbar en el modal para que se vea más limpio */
+.modal-content::-webkit-scrollbar {
+  width: 6px;
+}
+.modal-content::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
 }
 
 /* Botón cerrar */
@@ -220,7 +231,13 @@ body{
   color:#fff;
 }
 
-/* Foto modal con flechas */
+/* ===== COLUMNA IZQUIERDA (Foto y Selectores) ===== */
+.columna-izquierda{
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
+
 .foto-modal{
   position:relative;
   display:flex;
@@ -233,7 +250,7 @@ body{
 
 .foto-modal img{
   width:100%;
-  max-height:55vh; /* Antes 75vh - Para que no sea tan alta */
+  max-height:40vh; /* Foto más controlada */
   object-fit:cover;
 }
 
@@ -241,13 +258,13 @@ body{
   position:absolute;
   top:50%;
   transform:translateY(-50%);
-  width:36px;
-  height:36px;
+  width:32px;
+  height:32px;
   border-radius:50%;
   background:rgba(0,0,0,.55);
   border:1px solid #444;
   color:#e8e8e8;
-  font-size:22px;
+  font-size:20px;
   cursor:pointer;
   display:flex;
   align-items:center;
@@ -255,7 +272,7 @@ body{
   transition:all .3s;
   z-index:5;
   line-height:1;
-  padding-bottom:4px;
+  padding-bottom:3px;
 }
 
 .flecha:hover{
@@ -264,31 +281,28 @@ body{
   border-color:#d4af37;
 }
 
-.flecha.izq{left:10px}
-.flecha.der{right:10px}
+.flecha.izq{left:8px}
+.flecha.der{right:8px}
 
-/* ===== INFO MODAL ===== */
-.info{
-  overflow-y:visible;
-  padding-right:4px;
-  padding-bottom:10px;
-}
-
-.info h2{
-  font-size:22px; /* Antes 30px - Letra más pequeña */
-  margin-bottom:4px;
-  font-weight:700;
-  color:#e8e8e8;
+/* Selectores debajo de la foto */
+.selectores-bajo-foto{
+  background:#0a0a0a;
+  padding:14px;
+  border-radius:12px;
+  border:1px solid #222;
 }
 
 .bloque{
-  margin-top:14px; /* Antes 20px */
+  margin-bottom:12px;
+}
+.bloque:last-child{
+  margin-bottom:0;
 }
 
 .bloque h4{
-  margin-bottom:8px;
+  margin-bottom:6px;
   font-weight:600;
-  font-size:13px; /* Letra de títulos más pequeña */
+  font-size:12px;
   color:#aaa;
 }
 
@@ -299,8 +313,8 @@ body{
 }
 
 .color-circulo{
-  width:30px; /* Antes 36px */
-  height:30px;
+  width:28px;
+  height:28px;
   border-radius:50%;
   border:2px solid #444;
   cursor:pointer;
@@ -308,29 +322,23 @@ body{
   transition:all .3s;
 }
 
-.color-circulo:hover{
-  transform:scale(1.1);
-}
-
-.color-circulo.activo{
-  outline:2px solid #d4af37;
-  outline-offset:2px;
-}
+.color-circulo:hover{ transform:scale(1.1); }
+.color-circulo.activo{ outline:2px solid #d4af37; outline-offset:2px; }
 
 .color-circulo.agotado::after{
   content:"";
   position:absolute;
-  width:40px;
+  width:36px;
   height:2px;
   background:#ff5252;
   transform:rotate(-45deg);
-  top:13px;
+  top:11px;
   left:-6px;
 }
 
 .talla-circulo{
-  width:36px; /* Antes 45px */
-  height:36px;
+  width:32px;
+  height:32px;
   border-radius:50%;
   border:2px solid #444;
   display:flex;
@@ -341,149 +349,72 @@ body{
   position:relative;
   transition:all .3s;
   font-weight:600;
-  font-size:13px;
+  font-size:12px;
   color:#e8e8e8;
 }
 
-.talla-circulo:hover:not(.agotado){
-  transform:scale(1.05);
-  border-color:#d4af37;
-}
-
-.talla-circulo.activo{
-  background:#d4af37;
-  border-color:#d4af37;
-  color:#0a0a0a;
-  box-shadow:0 0 15px rgba(212,175,55,.2);
-}
-
-.talla-circulo.agotado{
-  color:#555;
-  cursor:not-allowed;
-}
+.talla-circulo:hover:not(.agotado){ transform:scale(1.05); border-color:#d4af37; }
+.talla-circulo.activo{ background:#d4af37; border-color:#d4af37; color:#0a0a0a; box-shadow:0 0 10px rgba(212,175,55,.2); }
+.talla-circulo.agotado{ color:#555; cursor:not-allowed; }
 
 .talla-circulo.agotado::after{
   content:"";
   position:absolute;
-  width:40px;
+  width:36px;
   height:2px;
   background:#ff5252;
   transform:rotate(-35deg);
 }
 
 .stock-disponible{
-  font-size:12px; /* Antes 13px */
+  font-size:11px;
   color:#aaa;
-  margin-top:4px;
-}
-
-.estado{
-  margin-top:10px;
-  font-weight:bold;
-  font-size:13px;
-}
-
-.disponible{color:#4caf50}
-.agotado-texto{color:#ff5252}
-
-.cantidad{
-  display:flex;
-  align-items:center;
-  gap:12px;
   margin-top:6px;
 }
 
-.cantidad button{
-  width:30px; /* Antes 36px */
-  height:30px;
-  border:1px solid #333;
-  border-radius:50%;
-  font-size:16px;
-  cursor:pointer;
-  background:#1a1a1a;
-  color:#e8e8e8;
-  transition:all .3s;
-}
-
-.cantidad button:hover{
-  background:#d4af37;
-  color:#0a0a0a;
-  border-color:#d4af37;
-}
-
-.cantidad strong{
-  font-size:16px; /* Antes 20px */
-  min-width:20px;
-  text-align:center;
-  color:#e8e8e8;
-}
-
-.detalles{
-  margin-top:16px;
-  color:#aaa;
-  line-height:1.5;
-  font-size:13px; /* Letra más pequeña para los detalles */
-}
-
-.detalles h4{
-  color:#ccc;
-  margin-top:14px;
-  margin-bottom:4px;
-  font-size:13px;
-}
-
-.detalles ul{
-  padding-left:16px;
-}
-
-/* ===== TABLA DE MEDIDAS ===== */
-.tabla-medidas-imagen{
+.estado{
   margin-top:8px;
-  width:100%;
+  font-weight:bold;
+  font-size:12px;
+}
+.disponible{color:#4caf50}
+.agotado-texto{color:#ff5252}
+
+/* ===== COLUMNA DERECHA (Título, Precio, Detalles, Compra) ===== */
+.columna-derecha{
+  display:flex;
+  flex-direction:column;
 }
 
-.tabla-medidas-imagen img{
-  width:100%;
-  max-height:120px; /* Ajuste para que no ocupe tanta altura */
-  object-fit:cover;
-  border-radius:8px;
-  border:1px solid #222;
-}
-
-.medidas-nota{
-  font-size:11px;
-  color:#555;
-  margin-top:4px;
-}
-
-/* ===== BARRA DE COMPRA ===== */
-.barra-compra{
-  background:#0a0a0a;
-  border:1px solid #222;
-  padding:14px; /* Antes 18px */
-  border-radius:12px;
-  margin-top:18px; /* Antes 25px */
+.columna-derecha h2{
+  font-size:22px;
+  margin-bottom:6px;
+  font-weight:700;
+  color:#e8e8e8;
+  line-height:1.2;
 }
 
 .precio{
-  font-size:22px; /* Antes 26px */
+  font-size:24px;
   font-weight:800;
-  margin-bottom:4px;
+  margin-bottom:2px;
   color:#d4af37;
+  display:flex;
+  align-items:center;
+  gap:10px;
 }
 
 .precio .precio-descuento{
   color:#555;
   font-size:16px;
   text-decoration:line-through;
-  margin-left:8px;
   font-weight:400;
 }
 
 .precio-unitario{
   color:#666;
   font-size:12px;
-  margin-bottom:10px;
+  margin-bottom:16px;
 }
 
 .precio-unitario .precio-mayor{
@@ -491,36 +422,109 @@ body{
   font-weight:700;
 }
 
+.detalles{
+  color:#aaa;
+  line-height:1.5;
+  font-size:13px;
+  flex-grow: 1; /* Empuja la barra de compra hacia abajo */
+}
+
+.detalles h4{
+  color:#ccc;
+  margin-top:12px;
+  margin-bottom:4px;
+  font-size:13px;
+}
+
+.detalles h4:first-child{
+  margin-top:0;
+}
+
+.detalles ul{
+  padding-left:16px;
+}
+
+/* Tabla de medidas */
+.tabla-medidas-imagen{
+  margin-top:6px;
+  width:100%;
+}
+.tabla-medidas-imagen img{
+  width:100%;
+  max-height:80px;
+  object-fit:cover;
+  border-radius:6px;
+  border:1px solid #222;
+}
+.medidas-nota{
+  font-size:11px;
+  color:#555;
+  margin-top:2px;
+}
+
+/* Barra de compra */
+.barra-compra{
+  background:#0a0a0a;
+  border:1px solid #222;
+  padding:14px;
+  border-radius:12px;
+  margin-top:16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cantidad{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 4px;
+  width: 110px;
+}
+.cantidad button{
+  width:28px;
+  height:28px;
+  border:none;
+  border-radius:6px;
+  font-size:16px;
+  cursor:pointer;
+  background:transparent;
+  color:#e8e8e8;
+  transition:all .3s;
+}
+.cantidad button:hover{
+  background:#333;
+  color:#d4af37;
+}
+.cantidad strong{
+  font-size:14px;
+  color:#e8e8e8;
+}
+
 .btn-main{
   width:100%;
-  padding:12px; /* Antes 15px */
+  padding:12px;
   background:#d4af37;
   color:#0a0a0a;
   border:none;
-  border-radius:10px;
-  font-size:14px; /* Letra del botón un poco más chica */
+  border-radius:8px;
+  font-size:14px;
   font-weight:700;
   cursor:pointer;
   transition:all .3s;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:8px;
 }
-
 .btn-main:hover:not(:disabled){
-  transform:translateY(-2px);
-  box-shadow:0 8px 20px rgba(212,175,55,.3);
   background:#c9a84c;
 }
-
 .btn-main:disabled{
   background:#222;
   color:#555;
   cursor:not-allowed;
   opacity:.6;
 }
-
 .btn-main.agotado-btn{
   background:#1a1a1a;
   color:#ff5252;
@@ -546,10 +550,7 @@ body{
   box-shadow:0 4px 18px rgba(212,175,55,.3);
   transition:all .3s;
 }
-
-.carrito-flotante:hover{
-  transform:scale(1.05);
-}
+.carrito-flotante:hover{ transform:scale(1.05); }
 
 .carrito-contador{
   position:absolute;
@@ -577,9 +578,8 @@ body{
   justify-content:flex-end;
   animation:fadeIn .3s;
 }
-
 .carrito-box{
-  width:380px; /* Un poco más compacto */
+  width:380px;
   max-width:100%;
   height:100%;
   background:#0a0a0a;
@@ -589,89 +589,21 @@ body{
   border-left:1px solid #222;
   animation:slideIn .3s;
 }
-
 @keyframes slideIn{
   from{transform:translateX(100%);opacity:0}
   to{transform:translateX(0);opacity:1}
 }
-
-.carrito-box h2{
-  margin-bottom:18px;
-  font-weight:700;
-  font-size:22px;
-  color:#e8e8e8;
-}
-
-.item-carrito{
-  display:grid;
-  grid-template-columns:70px 1fr;
-  gap:12px;
-  border-bottom:1px solid #222;
-  padding:12px 0;
-}
-
-.item-carrito img{
-  width:70px;
-  height:90px;
-  object-fit:cover;
-  background:#1a1a1a;
-  border-radius:8px;
-  padding:4px;
-}
-
-.item-carrito .item-info{
-  display:flex;
-  flex-direction:column;
-  gap:2px;
-}
-
-.item-carrito .item-info strong{
-  font-size:14px;
-  color:#e8e8e8;
-}
-
-.item-carrito .item-info p{
-  color:#888;
-  font-size:12px;
-  margin:0;
-}
-
-.eliminar{
-  margin-top:6px;
-  background:#1a1a1a;
-  color:#e8e8e8;
-  border:1px solid #333;
-  padding:4px 10px;
-  border-radius:6px;
-  cursor:pointer;
-  font-size:11px;
-  transition:all .3s;
-  width:max-content;
-}
-
-.eliminar:hover{
-  background:#ff5252;
-  border-color:#ff5252;
-  color:#fff;
-}
-
-.resumen{
-  margin-top:18px;
-  border-top:1px solid #222;
-  padding-top:14px;
-}
-
-.resumen p{
-  margin:4px 0;
-  font-size:13px;
-  color:#aaa;
-}
-
-.resumen h3{
-  font-size:20px;
-  margin-top:8px;
-  color:#d4af37;
-}
+.carrito-box h2{ margin-bottom:18px; font-weight:700; font-size:22px; color:#e8e8e8; }
+.item-carrito{ display:grid; grid-template-columns:70px 1fr; gap:12px; border-bottom:1px solid #222; padding:12px 0; }
+.item-carrito img{ width:70px; height:90px; object-fit:cover; background:#1a1a1a; border-radius:8px; padding:4px; }
+.item-carrito .item-info{ display:flex; flex-direction:column; gap:2px; }
+.item-carrito .item-info strong{ font-size:14px; color:#e8e8e8; }
+.item-carrito .item-info p{ color:#888; font-size:12px; margin:0; }
+.eliminar{ margin-top:6px; background:#1a1a1a; color:#e8e8e8; border:1px solid #333; padding:4px 10px; border-radius:6px; cursor:pointer; font-size:11px; transition:all .3s; width:max-content; }
+.eliminar:hover{ background:#ff5252; border-color:#ff5252; color:#fff; }
+.resumen{ margin-top:18px; border-top:1px solid #222; padding-top:14px; }
+.resumen p{ margin:4px 0; font-size:13px; color:#aaa; }
+.resumen h3{ font-size:20px; margin-top:8px; color:#d4af37; }
 
 /* ===== TOAST ===== */
 .toast{
@@ -694,169 +626,55 @@ body{
   gap:10px;
   box-shadow:0 8px 30px rgba(76,175,80,.3);
 }
-
-.toast.mostrar{
-  opacity:1;
-  transform:translateX(-50%) translateY(0);
-}
+.toast.mostrar{ opacity:1; transform:translateX(-50%) translateY(0); }
 
 /* ===== RESPONSIVE ===== */
-@media(max-width:900px){
-  .catalogo{
-    grid-template-columns:repeat(2,1fr);
-    gap:16px;
-  }
-
+@media(max-width:850px){
   .modal-content{
-    grid-template-columns:1fr;
-    padding:16px;
+    grid-template-columns:1fr; /* Una sola columna en móviles */
     gap:16px;
-    margin:5px auto;
-    width:100%;
-    border-radius:12px;
+    padding:16px;
+    max-height:95vh;
   }
-
   .foto-modal img{
-    max-height:40vh;
+    max-height:35vh;
   }
+  .columna-izquierda {
+    gap: 12px;
+  }
+}
 
-  .barra-compra{
-    position:sticky;
-    bottom:0;
-    margin-top:16px;
-    background:#0a0a0a;
-    border:1px solid #d4af37;
-    border-radius:12px;
-    padding:12px;
-    z-index:5;
-  }
-
-  .modal{
-    padding:5px;
-    align-items:flex-start;
-  }
+@media(max-width:900px){
+  .catalogo{ grid-template-columns:repeat(2,1fr); gap:16px; }
 }
 
 @media(max-width:768px){
-  .presentacion{
-    padding:6px 14px;
-    margin:8px auto 14px;
-    border-left-width:2px;
-  }
-
-  .presentacion-inner h1{
-    font-size:18px;
-    letter-spacing:3px;
-  }
-
-  .presentacion-inner .frase{
-    font-size:10px;
-    letter-spacing:0.2px;
-  }
+  .presentacion{ padding:6px 14px; margin:8px auto 14px; border-left-width:2px; }
+  .presentacion-inner h1{ font-size:18px; letter-spacing:3px; }
+  .presentacion-inner .frase{ font-size:10px; letter-spacing:0.2px; }
 }
 
 @media(max-width:480px){
-  .header{
-    height:75px;
-    padding:0 5%;
-  }
-
-  .logo img{
-    height:40px;
-  }
-
-  .redes a{
-    font-size:11px;
-    padding:5px 10px;
-  }
-
-  .catalogo{
-    width:94%;
-    grid-template-columns:repeat(2,1fr);
-    gap:12px;
-    padding-bottom:80px;
-  }
-
-  .producto h3{
-    font-size:13px;
-  }
-
-  .producto .precio-tarjeta{
-    font-size:15px;
-  }
-
-  .producto{
-    padding:8px;
-  }
-
-  .modal{
-    padding:0;
-    align-items:flex-start;
-  }
-
-  .modal-content{
-    width:100%;
-    min-height:100vh;
-    border-radius:0;
-    padding:14px;
-    padding-bottom:20px;
-    margin:0;
-  }
-
-  .info h2{
-    font-size:20px;
-  }
-
-  .barra-compra{
-    position:sticky;
-    bottom:0;
-    margin-top:16px;
-    border-radius:10px;
-    padding:12px;
-  }
-
-  .carrito-flotante{
-    right:16px;
-    bottom:80px;
-    width:56px;
-    height:56px;
-    font-size:22px;
-  }
-
-  .carrito-box{
-    width:100%;
-    padding:18px;
-  }
-
-  .toast{
-    bottom:150px;
-    font-size:13px;
-    padding:10px 16px;
-  }
-
-  .flecha{
-    width:30px;
-    height:30px;
-    font-size:18px;
-  }
-
+  .header{ height:75px; padding:0 5%; }
+  .logo img{ height:40px; }
+  .redes a{ font-size:11px; padding:5px 10px; }
+  .catalogo{ width:94%; grid-template-columns:repeat(2,1fr); gap:12px; padding-bottom:80px; }
+  .producto h3{ font-size:13px; }
+  .producto .precio-tarjeta{ font-size:15px; }
+  .producto{ padding:8px; }
+  .modal{ padding:0; align-items:flex-start; }
+  .modal-content{ width:100%; min-height:100vh; border-radius:0; padding:14px; padding-bottom:20px; margin:0; }
+  .columna-derecha h2{ font-size:20px; }
+  .precio { font-size: 22px; }
+  .carrito-flotante{ right:16px; bottom:80px; width:56px; height:56px; font-size:22px; }
+  .carrito-box{ width:100%; padding:18px; }
+  .toast{ bottom:150px; font-size:13px; padding:10px 16px; }
+  .flecha{ width:30px; height:30px; font-size:18px; }
   .flecha.izq{left:6px}
   .flecha.der{right:6px}
-
-  .presentacion{
-    padding:5px 12px;
-    margin:6px auto 12px;
-    border-radius:8px;
-  }
-
-  .presentacion-inner h1{
-    font-size:15px;
-    letter-spacing:2px;
-  }
-
-  .presentacion-inner .frase{
-    font-size:9px;
-  }
+  .presentacion{ padding:5px 12px; margin:6px auto 12px; border-radius:8px; }
+  .presentacion-inner h1{ font-size:15px; letter-spacing:2px; }
+  .presentacion-inner .frase{ font-size:9px; }
 }
 </style>
 </head>
@@ -887,36 +705,36 @@ body{
   <div class="modal-content">
     <button class="cerrar" onclick="cerrarModal()" aria-label="Cerrar">×</button>
 
-    <div class="foto-modal">
-      <button class="flecha izq" onclick="cambiarFoto(-1)" aria-label="Foto anterior">‹</button>
-      <img id="fotoPrincipal" src="" alt="Producto">
-      <button class="flecha der" onclick="cambiarFoto(1)" aria-label="Foto siguiente">›</button>
-    </div>
-
-    <div class="info">
-      <h2 id="nombreProducto"></h2>
-
-      <div class="bloque">
-        <h4>Color</h4>
-        <div class="colores" id="colores"></div>
+    <!-- COLUMNA IZQUIERDA: Foto y selectores -->
+    <div class="columna-izquierda">
+      <div class="foto-modal">
+        <button class="flecha izq" onclick="cambiarFoto(-1)" aria-label="Foto anterior">‹</button>
+        <img id="fotoPrincipal" src="" alt="Producto">
+        <button class="flecha der" onclick="cambiarFoto(1)" aria-label="Foto siguiente">›</button>
       </div>
 
-      <div class="bloque">
-        <h4>Talla</h4>
-        <div class="tallas" id="tallas"></div>
-        <div class="stock-disponible" id="stockInfo"></div>
-      </div>
+      <div class="selectores-bajo-foto">
+        <div class="bloque">
+          <h4>Color</h4>
+          <div class="colores" id="colores"></div>
+        </div>
 
-      <p class="estado" id="estadoProducto"></p>
-
-      <div class="bloque">
-        <h4>Cantidad</h4>
-        <div class="cantidad">
-          <button onclick="cambiarCantidad(-1)" aria-label="Restar">−</button>
-          <strong id="cantidad">1</strong>
-          <button onclick="cambiarCantidad(1)" aria-label="Sumar">+</button>
+        <div class="bloque" style="margin-bottom:0;">
+          <h4>Talla</h4>
+          <div class="tallas" id="tallas"></div>
+          <div class="stock-disponible" id="stockInfo"></div>
+          <p class="estado" id="estadoProducto"></p>
         </div>
       </div>
+    </div>
+
+    <!-- COLUMNA DERECHA: Info y Detalles -->
+    <div class="columna-derecha">
+      <h2 id="nombreProducto"></h2>
+      
+      <!-- PRECIO AQUÍ -->
+      <p class="precio" id="precioProducto"></p>
+      <p class="precio-unitario" id="precioUnitario"></p>
 
       <div class="detalles">
         <h4>Detalles de la prenda</h4>
@@ -928,13 +746,16 @@ body{
         <h4>Tabla de medidas</h4>
         <p class="medidas-nota">📏 Guía de tallas</p>
         <div class="tabla-medidas-imagen">
-          <img src="https://via.placeholder.com/800x400/222/d4af37?text=Tu+Tabla+de+Medidas" alt="Tabla de medidas BAUVARE">
+          <img src="https://via.placeholder.com/800x400/222/d4af37?text=Tabla+de+Medidas" alt="Tabla de medidas BAUVARE">
         </div>
       </div>
 
       <div class="barra-compra">
-        <p class="precio" id="precioProducto"></p>
-        <p class="precio-unitario" id="precioUnitario"></p>
+        <div class="cantidad">
+          <button onclick="cambiarCantidad(-1)" aria-label="Restar">−</button>
+          <strong id="cantidad">1</strong>
+          <button onclick="cambiarCantidad(1)" aria-label="Sumar">+</button>
+        </div>
         <button class="btn-main" id="btnAgregar" onclick="agregarAlCarrito()">
           Agregar al carrito
         </button>
