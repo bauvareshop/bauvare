@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BAUVARE | Catálogo</title>
 
-<!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
@@ -91,43 +90,6 @@ body{
   margin:0;
 }
 
-/* ===== RESPONSIVE MÓVIL ===== */
-@media(max-width:768px){
-  .presentacion{
-    padding:6px 14px;
-    margin:8px auto 14px;
-    border-left-width:2px;
-  }
-  
-  .presentacion-inner h1{
-    font-size:18px;
-    letter-spacing:3px;
-  }
-  
-  .presentacion-inner .frase{
-    font-size:10px;
-    letter-spacing:0.2px;
-  }
-}
-
-@media(max-width:480px){
-  .presentacion{
-    padding:5px 12px;
-    margin:6px auto 12px;
-    border-radius:8px;
-  }
-  
-  .presentacion-inner h1{
-    font-size:15px;
-    letter-spacing:2px;
-  }
-  
-  .presentacion-inner .frase{
-    font-size:9px;
-    letter-spacing:0px;
-  }
-}
-
 /* ===== CATÁLOGO ===== */
 .catalogo{
   width:92%;
@@ -194,6 +156,7 @@ body{
   border-radius:12px;
   font-size:12px;
   font-weight:700;
+  z-index:2;
 }
 
 /* ===== MODAL ===== */
@@ -228,87 +191,80 @@ body{
   border-radius:18px;
   position:relative;
   border:1px solid #222;
-  overflow-y:visible;
-  max-height:none;
 }
 
-/* ===== RESPONSIVE ===== */
-@media(max-width:900px){
-  .catalogo{
-    grid-template-columns:repeat(2,1fr);
-    gap:16px;
-  }
-
-  .modal-content{
-    grid-template-columns:1fr;
-    padding:18px;
-    gap:16px;
-    margin:5px auto;
-    width:100%;
-    border-radius:12px;
-  }
-
-  .foto-modal{
-    position:relative;
-    top:auto;
-  }
-
-  .foto-modal img{
-    max-height:50vh;
-  }
-
-  .info{
-    overflow:visible;
-    padding-bottom:10px;
-  }
-
-  .barra-compra{
-    position:sticky;
-    bottom:0;
-    margin-top:20px;
-    background:#0a0a0a;
-    border:2px solid #d4af37;
-    border-radius:14px;
-    padding:18px;
-  }
-
-  .modal{
-    padding:5px;
-    align-items:flex-start;
-  }
+/* Botón cerrar */
+.cerrar{
+  position:absolute;
+  top:10px;
+  right:14px;
+  background:rgba(0,0,0,.6);
+  border:1px solid #333;
+  color:#e8e8e8;
+  font-size:24px;
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  cursor:pointer;
+  z-index:10;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:all .3s;
+  line-height:1;
 }
 
-@media(max-width:480px){
-  .modal{
-    padding:0;
-    align-items:flex-start;
-  }
-
-  .modal-content{
-    width:100%;
-    min-height:100vh;
-    border-radius:0;
-    padding:14px;
-    padding-bottom:20px;
-    margin:0;
-  }
-
-  .foto-modal img{
-    max-height:45vh;
-  }
-
-  .info{
-    padding-bottom:10px;
-  }
-
-  .barra-compra{
-    position:sticky;
-    bottom:0;
-    margin-top:20px;
-    border-radius:12px;
-    padding:14px;
-  }
+.cerrar:hover{
+  background:#ff5252;
+  border-color:#ff5252;
+  color:#fff;
 }
+
+/* Foto modal con flechas */
+.foto-modal{
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.foto-modal img{
+  width:100%;
+  max-height:75vh;
+  object-fit:cover;
+  border-radius:12px;
+  background:#1a1a1a;
+}
+
+.flecha{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  background:rgba(0,0,0,.55);
+  border:1px solid #444;
+  color:#e8e8e8;
+  font-size:26px;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:all .3s;
+  z-index:5;
+  line-height:1;
+  padding-bottom:4px;
+}
+
+.flecha:hover{
+  background:#d4af37;
+  color:#0a0a0a;
+  border-color:#d4af37;
+}
+
+.flecha.izq{left:10px}
+.flecha.der{right:10px}
 
 /* ===== INFO MODAL ===== */
 .info{
@@ -473,7 +429,7 @@ body{
   padding-left:18px;
 }
 
-/* ===== TABLA DE MEDIDAS COMO IMAGEN ===== */
+/* ===== TABLA DE MEDIDAS ===== */
 .tabla-medidas-imagen{
   margin-top:14px;
   width:100%;
@@ -745,15 +701,11 @@ body{
 
   .modal-content{
     grid-template-columns:1fr;
-    max-height:98vh;
     padding:18px;
     gap:16px;
     margin:5px auto;
-  }
-
-  .foto-modal{
-    position:relative;
-    top:auto;
+    width:100%;
+    border-radius:12px;
   }
 
   .foto-modal img{
@@ -761,8 +713,6 @@ body{
   }
 
   .info{
-    overflow:visible;
-    max-height:none;
     padding-bottom:10px;
   }
 
@@ -774,11 +724,30 @@ body{
     border:2px solid #d4af37;
     border-radius:14px;
     padding:18px;
+    z-index:5;
   }
 
   .modal{
     padding:5px;
     align-items:flex-start;
+  }
+}
+
+@media(max-width:768px){
+  .presentacion{
+    padding:6px 14px;
+    margin:8px auto 14px;
+    border-left-width:2px;
+  }
+
+  .presentacion-inner h1{
+    font-size:18px;
+    letter-spacing:3px;
+  }
+
+  .presentacion-inner .frase{
+    font-size:10px;
+    letter-spacing:0.2px;
   }
 }
 
@@ -817,7 +786,7 @@ body{
   }
 
   .modal{
-    padding:4px;
+    padding:0;
     align-items:flex-start;
   }
 
@@ -827,7 +796,6 @@ body{
     border-radius:0;
     padding:14px;
     padding-bottom:20px;
-    max-height:none;
     margin:0;
   }
 
@@ -870,6 +838,21 @@ body{
 
   .flecha.izq{left:6px}
   .flecha.der{right:6px}
+
+  .presentacion{
+    padding:5px 12px;
+    margin:6px auto 12px;
+    border-radius:8px;
+  }
+
+  .presentacion-inner h1{
+    font-size:15px;
+    letter-spacing:2px;
+  }
+
+  .presentacion-inner .frase{
+    font-size:9px;
+  }
 }
 </style>
 </head>
@@ -881,12 +864,11 @@ body{
     <img src="https://i.postimg.cc/Vvt9Dv1K/logitobauvareeditable.jpg" alt="BAUVARE">
   </div>
   <div class="redes">
-    <a href="https://www.instagram.com/" target="_blank">Instagram</a>
-    <a href="https://www.tiktok.com/" target="_blank">TikTok</a>
+    <a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.tiktok.com/" target="_blank" rel="noopener">TikTok</a>
   </div>
 </header>
 
-<!-- ===== PRESENTACIÓN ===== -->
 <section class="presentacion">
   <div class="presentacion-inner">
     <h1>BAUVARE</h1>
@@ -899,12 +881,12 @@ body{
 <!-- ===== MODAL PRODUCTO ===== -->
 <div class="modal" id="modal">
   <div class="modal-content">
-    <button class="cerrar" onclick="cerrarModal()">×</button>
+    <button class="cerrar" onclick="cerrarModal()" aria-label="Cerrar">×</button>
 
     <div class="foto-modal">
-      <button class="flecha izq" onclick="cambiarFoto(-1)">‹</button>
+      <button class="flecha izq" onclick="cambiarFoto(-1)" aria-label="Foto anterior">‹</button>
       <img id="fotoPrincipal" src="" alt="Producto">
-      <button class="flecha der" onclick="cambiarFoto(1)">›</button>
+      <button class="flecha der" onclick="cambiarFoto(1)" aria-label="Foto siguiente">›</button>
     </div>
 
     <div class="info">
@@ -926,9 +908,9 @@ body{
       <div class="bloque">
         <h4>Cantidad</h4>
         <div class="cantidad">
-          <button onclick="cambiarCantidad(-1)">−</button>
+          <button onclick="cambiarCantidad(-1)" aria-label="Restar">−</button>
           <strong id="cantidad">1</strong>
-          <button onclick="cambiarCantidad(1)">+</button>
+          <button onclick="cambiarCantidad(1)" aria-label="Sumar">+</button>
         </div>
       </div>
 
@@ -941,11 +923,9 @@ body{
 
         <h4>Tabla de medidas</h4>
         <p class="medidas-nota">📏 Guía de tallas</p>
-        <!-- ===== IMAGEN DE MEDIDAS ===== -->
         <div class="tabla-medidas-imagen">
           <img src="https://via.placeholder.com/800x400/222/d4af37?text=Tu+Tabla+de+Medidas" alt="Tabla de medidas BAUVARE">
         </div>
-        <!-- ===== FIN IMAGEN DE MEDIDAS ===== -->
       </div>
 
       <div class="barra-compra">
@@ -968,7 +948,7 @@ body{
 <!-- ===== PANEL CARRITO ===== -->
 <div class="carrito-panel" id="carritoPanel">
   <div class="carrito-box">
-    <button class="cerrar" onclick="cerrarCarrito()">×</button>
+    <button class="cerrar" onclick="cerrarCarrito()" aria-label="Cerrar">×</button>
     <h2>Mi pedido</h2>
     <div id="itemsCarrito"></div>
     <div class="resumen" id="resumenCarrito"></div>
@@ -981,7 +961,6 @@ body{
   </div>
 </div>
 
-<!-- ===== TOAST ===== -->
 <div class="toast" id="toast">Producto agregado al carrito</div>
 
 <script>
@@ -992,7 +971,7 @@ body{
 const numeroWhatsApp = "51926677046";
 
 /* ======================================================
-   PRODUCTOS (8 PRODUCTOS)
+   PRODUCTOS
    ====================================================== */
 
 const productos = [
@@ -1257,7 +1236,7 @@ productos.forEach((p,index)=>{
   catalogo.innerHTML += `
     <div class="producto" onclick="abrirModal(${index})">
       ${p.descuento ? `<span class="descuento">-${p.descuento}%</span>` : ""}
-      <img src="${p.colores[0].imagenes[0]}" alt="${p.nombre}">
+      <img src="${p.colores[0].imagenes[0]}" alt="${p.nombre}" loading="lazy">
       <h3>${p.nombre}</h3>
       <div class="precio-tarjeta">
         S/ ${precioConDescuento.toFixed(2)}
@@ -1271,9 +1250,13 @@ productos.forEach((p,index)=>{
 function abrirModal(index){
   productoActual = productos[index];
   colorActual = 0;
-  tallaActual = productoActual.tallas[0];
   fotoActual = 0;
   cantidadActual = 1;
+
+  // Seleccionar la primera talla con stock disponible en el primer color
+  const colorInicial = productoActual.colores[0];
+  const tallaConStock = productoActual.tallas.find(t => colorInicial.stock[t] && colorInicial.stock[t] > 0);
+  tallaActual = tallaConStock || productoActual.tallas[0];
 
   document.getElementById("nombreProducto").textContent = productoActual.nombre;
   document.getElementById("cantidad").textContent = cantidadActual;
@@ -1305,19 +1288,15 @@ function cargarFoto(){
 }
 
 function cambiarFoto(direccion){
-  const fotosColor = productoActual.colores[colorActual].imagenes;
-
   fotoActual += direccion;
 
-  if(fotoActual >= fotosColor.length){
-    colorActual++;
-    if(colorActual >= productoActual.colores.length) colorActual = 0;
+  if(fotoActual >= productoActual.colores[colorActual].imagenes.length){
+    colorActual = (colorActual + 1) % productoActual.colores.length;
     fotoActual = 0;
   }
 
   if(fotoActual < 0){
-    colorActual--;
-    if(colorActual < 0) colorActual = productoActual.colores.length - 1;
+    colorActual = (colorActual - 1 + productoActual.colores.length) % productoActual.colores.length;
     fotoActual = productoActual.colores[colorActual].imagenes.length - 1;
   }
 
@@ -1411,9 +1390,8 @@ function cambiarCantidad(num){
 
 /* ===== PRECIO CON DESCUENTO POR MAYOR ===== */
 function calcularPrecioConDescuento(cantidad, precioUnitario){
-  // Descuento por mayor: 3 o más de la misma prenda = 15% de descuento
   if(cantidad >= 3){
-    return precioUnitario * 0.85; // 15% de descuento
+    return precioUnitario * 0.85;
   }
   return precioUnitario;
 }
@@ -1425,7 +1403,6 @@ function actualizarPrecio(){
   
   let precioHTML = `S/ ${total.toFixed(2)}`;
   
-  // Mostrar precio original tachado si aplica descuento
   if(cantidadActual >= 3){
     const precioOriginalTotal = precioBase * cantidadActual;
     precioHTML += ` <span class="precio-descuento">S/ ${precioOriginalTotal.toFixed(2)}</span>`;
@@ -1433,7 +1410,6 @@ function actualizarPrecio(){
   
   document.getElementById("precioProducto").innerHTML = precioHTML;
   
-  // Mostrar precio unitario con o sin descuento
   let unitarioText = `Precio unitario: S/ ${precioBase.toFixed(2)}`;
   if(cantidadActual >= 3){
     unitarioText = `Precio unitario: S/ ${precioConDescuento.toFixed(2)} `;
@@ -1456,17 +1432,29 @@ function agregarAlCarrito(){
   const color = productoActual.colores[colorActual];
   const precioConDescuento = calcularPrecioConDescuento(cantidadActual, productoActual.precio);
 
-  const item = {
-    nombre: productoActual.nombre,
-    color: color.nombre,
-    talla: tallaActual,
-    cantidad: cantidadActual,
-    precio: productoActual.precio,
-    precioDescuento: precioConDescuento,
-    foto: color.imagenes[0]
-  };
+  // Verificar si ya existe el mismo producto, color y talla
+  const itemExistente = carrito.find(item => 
+    item.nombre === productoActual.nombre && 
+    item.color === color.nombre && 
+    item.talla === tallaActual
+  );
 
-  carrito.push(item);
+  if(itemExistente){
+    itemExistente.cantidad += cantidadActual;
+    itemExistente.precioDescuento = calcularPrecioConDescuento(itemExistente.cantidad, productoActual.precio);
+  } else {
+    const item = {
+      nombre: productoActual.nombre,
+      color: color.nombre,
+      talla: tallaActual,
+      cantidad: cantidadActual,
+      precio: productoActual.precio,
+      precioDescuento: precioConDescuento,
+      foto: color.imagenes[0]
+    };
+    carrito.push(item);
+  }
+
   actualizarCarrito();
   mostrarToast("Producto agregado al carrito");
 
@@ -1488,6 +1476,8 @@ function mostrarToast(mensaje){
 function actualizarCarrito(){
   const totalItems = carrito.reduce((sum,item)=>sum + item.cantidad,0);
   document.getElementById("contadorCarrito").textContent = totalItems;
+  // Guardar en localStorage
+  localStorage.setItem("bauvare_carrito", JSON.stringify(carrito));
 }
 
 /* ===== ABRIR CARRITO ===== */
@@ -1550,7 +1540,10 @@ function eliminarItem(index){
 
 /* ===== WHATSAPP ===== */
 function pedirTodoWhatsApp(){
-  if(carrito.length === 0) return;
+  if(carrito.length === 0){
+    mostrarToast("Tu carrito está vacío");
+    return;
+  }
 
   let subtotal = 0;
   let cantidadTotal = 0;
@@ -1579,16 +1572,37 @@ Total: S/ ${subtotal.toFixed(2)}`;
   window.open(`https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`, "_blank");
 }
 
+/* ===== RECUPERAR CARRITO ===== */
+function cargarCarritoGuardado(){
+  const guardado = localStorage.getItem("bauvare_carrito");
+  if(guardado){
+    try{
+      carrito = JSON.parse(guardado);
+      actualizarCarrito();
+    }catch(e){ carrito = []; }
+  }
+}
+
 /* ===== CIERRE MODAL CLICK EXTERNO ===== */
 window.onclick = function(e){
   if(e.target === document.getElementById("modal")){
     cerrarModal();
   }
-
   if(e.target === document.getElementById("carritoPanel")){
     cerrarCarrito();
   }
 }
+
+// Cerrar con tecla ESC
+document.addEventListener("keydown", function(e){
+  if(e.key === "Escape"){
+    if(document.getElementById("modal").style.display === "flex") cerrarModal();
+    if(document.getElementById("carritoPanel").style.display === "flex") cerrarCarrito();
+  }
+});
+
+// Inicializar carrito guardado
+cargarCarritoGuardado();
 </script>
 
 </body>
